@@ -5,7 +5,9 @@ export const Users: CollectionConfig = {
   admin: {
     useAsTitle: 'username',
   },
-  auth: true,
+  auth: {
+    loginWithUsername: true,
+  },
   fields: [
     {
       name: 'username',
