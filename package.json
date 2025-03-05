@@ -12,7 +12,8 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@payloadcms/db-mongodb": "latest",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^22.5.4",
     "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
