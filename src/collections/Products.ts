@@ -38,6 +38,7 @@ export const Products: CollectionConfig = {
       relationTo: 'media',
       hasMany: true,
       minRows: 1,
+      displayPreview: true,
     },
   ],
 }
