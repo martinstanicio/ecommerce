@@ -13,6 +13,8 @@ import { Media } from './collections/Media'
 import { en } from '@payloadcms/translations/languages/en'
 import { es } from '@payloadcms/translations/languages/es'
 
+import { siteName } from '@/lib/metadata'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -27,6 +29,9 @@ export default buildConfig({
         Icon: '/components/icon.tsx',
         Logo: '/components/brand.tsx',
       },
+    },
+    meta: {
+      titleSuffix: `- ${siteName}`,
     },
   },
   collections: [Users, Media],
