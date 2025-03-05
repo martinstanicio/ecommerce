@@ -28,7 +28,7 @@ export default buildConfig({
       },
     },
     meta: {
-      titleSuffix: `- ${siteName}`,
+      titleSuffix: `| ${siteName}`,
     },
   },
   collections: [Users, Media],
