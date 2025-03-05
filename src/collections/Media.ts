@@ -12,6 +12,12 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
     },
+    {
+      name: 'products',
+      type: 'join',
+      collection: 'products',
+      on: 'images',
+    },
   ],
   upload: true,
 }

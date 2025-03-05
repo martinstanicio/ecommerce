@@ -1,5 +1,7 @@
 // storage-adapter-import-placeholder
 import { Media } from './collections/Media'
+import { Products } from './collections/Products'
+import { Tags } from './collections/Tags'
 import { Users } from './collections/Users'
 import { siteName } from '@/lib/metadata'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
@@ -31,7 +33,7 @@ export default buildConfig({
       titleSuffix: `| ${siteName}`,
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Products, Tags],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
