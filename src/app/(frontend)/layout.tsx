@@ -9,9 +9,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        <main>{children}</main>
-      </body>
+      <body className="bg-background text-foreground">{children}</body>
     </html>
   );
 }
