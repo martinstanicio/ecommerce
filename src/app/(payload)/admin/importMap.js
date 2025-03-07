@@ -1,7 +1,7 @@
-import { default as default_db4e19a034d60c232747c5a9cca405f9 } from 'src/components/icon.tsx'
-import { default as default_78e9f786c9ba95795d26edc45e1fa448 } from 'src/components/brand.tsx'
+import { default as default_3d3c8908763a69552ea4680dc4819185 } from 'src/components/admin/icon.tsx'
+import { default as default_5d8c2b80f2a27c8bc815d204a692a9f8 } from 'src/components/admin/logo.tsx'
 
 export const importMap = {
-  "/components/icon.tsx#default": default_db4e19a034d60c232747c5a9cca405f9,
-  "/components/brand.tsx#default": default_78e9f786c9ba95795d26edc45e1fa448
+  "/components/admin/icon.tsx#default": default_3d3c8908763a69552ea4680dc4819185,
+  "/components/admin/logo.tsx#default": default_5d8c2b80f2a27c8bc815d204a692a9f8
 }
