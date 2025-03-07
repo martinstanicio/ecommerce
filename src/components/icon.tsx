@@ -1,6 +1,10 @@
 export default function Icon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102.4 102.4" {...props}>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 102.4 102.4"
+      {...props}
+    >
       <path
         d="M50.67,86.55l-29.8-17.2c-.37-.22-.6-.61-.6-1.04v-26.56c0-.46.5-.75.9-.52l34.6,19.98c.48.28,1.09-.07,1.09-.63v-12.96c0-.52-.28-.99-.72-1.25L14.5,22.32c-.37-.22-.83-.22-1.21,0l-5.45,3.15c-.37.22-.6.61-.6,1.04v49.37c0,.43.23.83.6,1.04l42.75,24.68c.37.22.83.22,1.21,0l35.9-20.73c.48-.28.48-.97,0-1.25l-11.2-6.47c-.45-.26-1-.26-1.45,0l-23.18,13.38c-.37.22-.83.22-1.21,0Z"
         className="fill-current"
@@ -10,5 +14,5 @@ export default function Icon(props: React.SVGProps<SVGSVGElement>) {
         className="fill-current"
       />
     </svg>
-  )
+  );
 }

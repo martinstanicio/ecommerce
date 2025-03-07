@@ -1,21 +1,21 @@
 // storage-adapter-import-placeholder
-import { Media } from './collections/Media'
-import { Products } from './collections/Products'
-import { Tags } from './collections/Tags'
-import { Users } from './collections/Users'
-import { siteName } from '@/lib/metadata'
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
-import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import { en } from '@payloadcms/translations/languages/en'
-import { es } from '@payloadcms/translations/languages/es'
-import path from 'path'
-import { buildConfig } from 'payload'
-import sharp from 'sharp'
-import { fileURLToPath } from 'url'
+import { Media } from "./collections/Media";
+import { Products } from "./collections/Products";
+import { Tags } from "./collections/Tags";
+import { Users } from "./collections/Users";
+import { siteName } from "@/lib/metadata";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
+import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { en } from "@payloadcms/translations/languages/en";
+import { es } from "@payloadcms/translations/languages/es";
+import path from "path";
+import { buildConfig } from "payload";
+import sharp from "sharp";
+import { fileURLToPath } from "url";
 
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 export default buildConfig({
   admin: {
@@ -25,8 +25,8 @@ export default buildConfig({
     },
     components: {
       graphics: {
-        Icon: '/components/admin/icon.tsx',
-        Logo: '/components/admin/logo.tsx',
+        Icon: "/components/admin/icon.tsx",
+        Logo: "/components/admin/logo.tsx",
       },
     },
     meta: {
@@ -35,12 +35,12 @@ export default buildConfig({
   },
   collections: [Users, Media, Products, Tags],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+    url: process.env.DATABASE_URI || "",
   }),
   sharp,
   plugins: [
@@ -49,6 +49,6 @@ export default buildConfig({
   ],
   i18n: {
     supportedLanguages: { en, es },
-    fallbackLanguage: 'es',
+    fallbackLanguage: "es",
   },
-})
+});

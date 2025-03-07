@@ -1,5 +1,5 @@
-import Brand from '@/components/brand'
+import Brand from "@/components/brand";
 
 export default function Logo() {
-  return <Brand />
+  return <Brand />;
 }
