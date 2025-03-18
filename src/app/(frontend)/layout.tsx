@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import "@/globals.css";
 
@@ -10,9 +11,12 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className="bg-background text-foreground">
-        <Navbar />
-        {children}
+      <body>
+        <div className="bg-background text-foreground grid grid-rows-[auto_1fr_auto] min-h-screen">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
