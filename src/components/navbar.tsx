@@ -18,27 +18,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { navigation } from "@/links";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-
-const navigationItems = [
-  {
-    title: "Home",
-    href: "/",
-  },
-  {
-    title: "About",
-    href: "/about",
-  },
-  {
-    title: "Services",
-    href: "/services",
-  },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
-];
 
 export default function Navbar() {
   return (
@@ -69,16 +51,16 @@ export default function Navbar() {
 
             <NavigationMenu>
               <NavigationMenuList className="flex-col gap-3">
-                {navigationItems.map((item) => (
-                  <NavigationMenuItem key={item.title}>
-                    <Link href={item.href} legacyBehavior passHref>
+                {navigation.map(({ title, href }) => (
+                  <NavigationMenuItem key={title}>
+                    <Link href={href} legacyBehavior passHref>
                       <NavigationMenuLink
                         className={cn(
                           navigationMenuTriggerStyle(),
                           "text-xl text-center",
                         )}
                       >
-                        {item.title}
+                        {title}
                       </NavigationMenuLink>
                     </Link>
                   </NavigationMenuItem>
@@ -96,11 +78,11 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <NavigationMenu className="max-md:hidden mr-auto">
           <NavigationMenuList>
-            {navigationItems.map((item) => (
-              <NavigationMenuItem key={item.title}>
-                <Link href={item.href} legacyBehavior passHref>
+            {navigation.map(({ title, href }) => (
+              <NavigationMenuItem key={title}>
+                <Link href={href} legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    {item.title}
+                    {title}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
