@@ -71,6 +71,9 @@ importers:
       sharp:
         specifier: 0.32.6
         version: 0.32.6
+      simple-icons:
+        specifier: ^14.11.0
+        version: 14.11.0
       tailwind-merge:
         specifier: ^3.0.2
         version: 3.0.2
@@ -3461,6 +3464,10 @@ packages:
 
   simple-get@4.0.1:
     resolution: {integrity: sha512-brv7p5WgH0jmQJr1ZDDfKDOSeWWg+OVypG99A/5vYGPqJ6pxiaHLy8nxtFjBA7oMa01ebA9gfh1uMCFqOuXxvA==}
+
+  simple-icons@14.11.0:
+    resolution: {integrity: sha512-wZmG7JXVhFrobLIUum20blb9mvW3TfUcSLP9bOQ42Ul37GYc/59armh2wKySHzhN1/NaTan5VUQmr/9wYseRXA==}
+    engines: {node: '>=0.12.18'}
 
   simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
@@ -8186,6 +8193,8 @@ snapshots:
       decompress-response: 6.0.0
       once: 1.4.0
       simple-concat: 1.0.1
+
+  simple-icons@14.11.0: {}
 
   simple-swizzle@0.2.2:
     dependencies:
