@@ -1,6 +1,11 @@
-import { Facebook, Instagram, Twitter } from "lucide-react";
+import { siFacebook, siInstagram, SimpleIcon, siX } from "simple-icons";
 
-export const navigation = [
+type NavigationItem = {
+  title: string;
+  href: string;
+};
+
+export const navigation: NavigationItem[] = [
   {
     title: "Inicio",
     href: "/",
@@ -15,20 +20,26 @@ export const navigation = [
   },
 ];
 
-export const social = [
+type SocialItem = {
+  name: string;
+  href: string;
+  icon: SimpleIcon;
+};
+
+export const social: SocialItem[] = [
   {
     name: "Instagram",
     href: "https://instagram.com",
-    icon: Instagram,
+    icon: siInstagram,
   },
   {
     name: "Facebook",
     href: "https://facebook.com",
-    icon: Facebook,
+    icon: siFacebook,
   },
   {
     name: "Twitter",
     href: "https://twitter.com",
-    icon: Twitter,
+    icon: siX,
   },
 ];
