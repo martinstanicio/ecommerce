@@ -19,5 +19,7 @@ export const Media: CollectionConfig = {
       on: "images",
     },
   ],
-  upload: true,
+  upload: {
+    mimeTypes: ["image/*"],
+  },
 };
