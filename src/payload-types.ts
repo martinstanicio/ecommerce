@@ -172,9 +172,9 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  tags?: (string | Tag)[] | null;
+  tags: (string | Tag)[];
   price: number;
-  images?: (string | Media)[] | null;
+  images: (string | Media)[];
   updatedAt: string;
   createdAt: string;
 }

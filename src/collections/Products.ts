@@ -25,7 +25,9 @@ export const Products: CollectionConfig = {
       name: "tags",
       type: "relationship",
       relationTo: "tags",
+      required: true,
       hasMany: true,
+      minRows: 1,
     },
     {
       name: "price",
@@ -36,6 +38,7 @@ export const Products: CollectionConfig = {
       name: "images",
       type: "upload",
       relationTo: "media",
+      required: true,
       hasMany: true,
       minRows: 1,
       displayPreview: true,
