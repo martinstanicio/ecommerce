@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Pagination,
   PaginationContent,
@@ -12,19 +14,19 @@ import { Fragment } from "react";
 type Props = React.ComponentProps<"nav"> & {
   totalPages: number;
   currentPage: number;
-  hasPrevPage: boolean;
-  hasNextPage: boolean;
-  baseUrl: string;
 };
 
 export default function PaginationBar({
   totalPages,
   currentPage,
-  hasPrevPage,
-  hasNextPage,
-  baseUrl,
   ...props
 }: Props) {
+  const prevUrl = new URL(window.location.href);
+  prevUrl.searchParams.set("page", (currentPage - 1).toString());
+
+  const nextUrl = new URL(window.location.href);
+  nextUrl.searchParams.set("page", (currentPage + 1).toString());
+
   const pages = Array.from(
     { length: totalPages },
     (_, index) => index + 1,
@@ -35,30 +37,43 @@ export default function PaginationBar({
       page === currentPage - 1 ||
       page === currentPage + 1,
   );
+  const hasPrevPage = currentPage > 1;
+  const hasNextPage = currentPage < totalPages;
 
   return (
     <Pagination {...props}>
       <PaginationContent>
-        {hasPrevPage && (
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-        )}
-        {pages.map((page, index, array) => (
-          <Fragment key={page}>
-            {page > 1 && page !== array[index - 1] + 1 && (
+        <PaginationItem>
+          <PaginationPrevious href={prevUrl} replace disabled={!hasPrevPage} />
+        </PaginationItem>
+
+        {pages.map((page, index, array) => {
+          const url = new URL(window.location.href);
+          url.searchParams.set("page", page.toString());
+
+          return (
+            <Fragment key={page}>
+              {page > 1 && page !== array[index - 1] + 1 && (
+                <PaginationItem>
+                  <PaginationEllipsis />
+                </PaginationItem>
+              )}
               <PaginationItem>
-                <PaginationEllipsis />
+                <PaginationLink
+                  href={url}
+                  replace
+                  isActive={page === currentPage}
+                >
+                  {page}
+                </PaginationLink>
               </PaginationItem>
-            )}
-            <PaginationLink href="#">{page}</PaginationLink>
-          </Fragment>
-        ))}
-        {hasNextPage && (
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        )}
+            </Fragment>
+          );
+        })}
+
+        <PaginationItem>
+          <PaginationNext href={nextUrl} replace disabled={!hasNextPage} />
+        </PaginationItem>
       </PaginationContent>
     </Pagination>
   );
