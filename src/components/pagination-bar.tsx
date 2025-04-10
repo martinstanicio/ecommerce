@@ -32,6 +32,7 @@ export default function PaginationBar({
     (_, index) => index + 1,
   ).filter(
     (page) =>
+      page === currentPage ||
       page === 1 ||
       page === totalPages ||
       page === currentPage - 1 ||
@@ -48,12 +49,12 @@ export default function PaginationBar({
         </PaginationItem>
 
         {pages.map((page, index, array) => {
-          const url = new URL(window.location.href);
-          url.searchParams.set("page", page.toString());
+          const isFirstPage = page === 1;
+          const isAdjacentToPrevPage = page - 1 === array[index - 1];
 
           return (
             <Fragment key={page}>
-              {page > 1 && page !== array[index - 1] + 1 && (
+              {!isFirstPage && !isAdjacentToPrevPage && (
                 <PaginationItem>
                   <PaginationEllipsis />
                 </PaginationItem>
