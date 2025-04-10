@@ -9,7 +9,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 type Props = React.ComponentProps<"nav"> & {
   totalPages: number;
@@ -21,11 +21,9 @@ export default function PaginationBar({
   currentPage,
   ...props
 }: Props) {
-  const prevUrl = new URL(window.location.href);
-  prevUrl.searchParams.set("page", (currentPage - 1).toString());
-
-  const nextUrl = new URL(window.location.href);
-  nextUrl.searchParams.set("page", (currentPage + 1).toString());
+  const [prevUrl, setPrevUrl] = useState<URL>();
+  const [nextUrl, setNextUrl] = useState<URL>();
+  const [pageUrls, setPageUrls] = useState<Record<number, URL>>({});
 
   const pages = Array.from(
     { length: totalPages },
@@ -41,11 +39,33 @@ export default function PaginationBar({
   const hasPrevPage = currentPage > 1;
   const hasNextPage = currentPage < totalPages;
 
+  useEffect(() => {
+    const previous = new URL(window.location.href);
+    previous.searchParams.set("page", (currentPage - 1).toString());
+    setPrevUrl(previous);
+
+    const next = new URL(window.location.href);
+    next.searchParams.set("page", (currentPage + 1).toString());
+    setNextUrl(next);
+
+    const urls: typeof pageUrls = {};
+    pages.forEach((page) => {
+      const url = new URL(window.location.href);
+      url.searchParams.set("page", page.toString());
+      urls[page] = url;
+    });
+    setPageUrls(urls);
+  }, [currentPage]);
+
   return (
     <Pagination {...props}>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href={prevUrl} replace disabled={!hasPrevPage} />
+          <PaginationPrevious
+            href={prevUrl || "#"}
+            replace
+            disabled={!hasPrevPage}
+          />
         </PaginationItem>
 
         {pages.map((page, index, array) => {
@@ -61,7 +81,7 @@ export default function PaginationBar({
               )}
               <PaginationItem>
                 <PaginationLink
-                  href={url}
+                  href={pageUrls[page] || "#"}
                   replace
                   isActive={page === currentPage}
                 >
@@ -73,7 +93,11 @@ export default function PaginationBar({
         })}
 
         <PaginationItem>
-          <PaginationNext href={nextUrl} replace disabled={!hasNextPage} />
+          <PaginationNext
+            href={nextUrl || "#"}
+            replace
+            disabled={!hasNextPage}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
