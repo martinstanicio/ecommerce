@@ -31,7 +31,7 @@ export default function SortingBar(props: React.ComponentProps<typeof Select>) {
   return (
     <Select defaultValue={defaultSort} onValueChange={setSort} {...props}>
       <SelectTrigger className="grow">
-        <SelectValue placeholder="Sort by" />
+        <SelectValue placeholder="Ordenar por..." />
       </SelectTrigger>
       <SelectContent>
         {sortingOptions.map((option) => (
