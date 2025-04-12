@@ -15,6 +15,7 @@ export const Products: CollectionConfig = {
       name: "name",
       type: "text",
       required: true,
+      unique: true,
     },
     {
       name: "description",
