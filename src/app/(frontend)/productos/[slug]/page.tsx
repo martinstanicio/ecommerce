@@ -8,12 +8,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ARS } from "@/lib/currency";
+import getProductBySlug from "@/lib/get-product-by-slug";
 import { isPopulatedList } from "@/lib/is-populated";
 import config from "@/payload.config";
 import { ShoppingCart } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getPayload } from "payload";
 
 export async function generateStaticParams() {
@@ -33,7 +35,7 @@ export async function generateStaticParams() {
     },
   });
 
-  return products.docs.map((product) => ({ slug: product.id }));
+  return products.docs.map((product) => ({ slug: product.slug }));
 }
 
 type Props = {
@@ -42,12 +44,10 @@ type Props = {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
-  const payload = await getPayload({ config });
-  const { name, description, tags, price, images } = await payload.findByID({
-    collection: "products",
-    id: slug,
-    depth: 1,
-  });
+  const product = await getProductBySlug(slug);
+
+  if (!product) notFound();
+  const { name, description, tags, price, images } = product;
 
   if (!isPopulatedList(tags)) {
     throw new Error("Product tags must be populated. Try increasing depth.");
@@ -117,13 +117,9 @@ export async function generateMetadata(
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug } = await params;
+  const product = await getProductBySlug(slug);
 
-  const payload = await getPayload({ config });
-  const product = await payload.findByID({
-    collection: "products",
-    id: slug,
-    depth: 1,
-  });
+  if (!product) notFound();
 
   if (!isPopulatedList(product.tags)) {
     throw new Error("Product tags must be populated. Try increasing depth.");
