@@ -5,6 +5,7 @@ import { isPopulatedList } from "@/lib/is-populated";
 import { cn } from "@/lib/utils";
 import { Product } from "@/payload-types";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = React.HTMLProps<HTMLDivElement> & { product: Product };
 
@@ -30,7 +31,7 @@ export default function ProductCard({ product, className, ...props }: Props) {
   return (
     <Card
       key={product.id}
-      className={cn("py-0 overflow-hidden gap-0", className)}
+      className={cn("py-0 overflow-hidden gap-0 relative", className)}
       {...props}
     >
       <Image
@@ -42,7 +43,14 @@ export default function ProductCard({ product, className, ...props }: Props) {
       />
       <CardContent className="p-4">
         <CardTitle className="flex justify-between items-start mb-2">
-          <h2>{name}</h2>
+          <h2>
+            <Link
+              href={`/productos/${product.slug}`}
+              className="before:absolute before:inset-0 hover:underline focus:underline"
+            >
+              {name}
+            </Link>
+          </h2>
           <span>{ARS.format(price)}</span>
         </CardTitle>
         <CardDescription>
