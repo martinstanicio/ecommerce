@@ -170,6 +170,7 @@ export interface Media {
  */
 export interface Product {
   id: string;
+  slug: string;
   name: string;
   description: string;
   tags: (string | Tag)[];
@@ -299,6 +300,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "products_select".
  */
 export interface ProductsSelect<T extends boolean = true> {
+  slug?: T;
   name?: T;
   description?: T;
   tags?: T;
