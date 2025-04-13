@@ -41,8 +41,9 @@ export default function ProductCard({ product, className, ...props }: Props) {
         height={images[0].height}
         className="object-cover object-center bg-secondary aspect-[4/3]"
       />
-      <CardContent className="p-4">
-        <CardTitle className="flex justify-between items-start mb-2">
+      <CardContent className="flex h-full flex-col justify-between p-4">
+        <div>
+          <CardTitle className="mb-2 flex items-start justify-between">
           <h2>
             <Link
               href={`/productos/${product.slug}`}
@@ -56,6 +57,7 @@ export default function ProductCard({ product, className, ...props }: Props) {
         <CardDescription>
           <p className="line-clamp-2">{description}</p>
         </CardDescription>
+        </div>
         <div className="after:to-background relative mt-3 flex gap-1 overflow-x-hidden after:absolute after:right-0 after:h-full after:w-4 after:bg-gradient-to-r after:from-transparent">
           {tags.map((tag) => (
             <Badge key={tag.id} variant="secondary">
