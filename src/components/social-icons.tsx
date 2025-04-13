@@ -10,7 +10,7 @@ export default function SocialIcons({
 }: React.HTMLProps<HTMLDivElement>) {
   return (
     <div
-      className={cn("flex gap-4 flex-wrap justify-center", className)}
+      className={cn("flex flex-wrap justify-center gap-4", className)}
       {...props}
     >
       {social.map(({ name, href, icon }) => (

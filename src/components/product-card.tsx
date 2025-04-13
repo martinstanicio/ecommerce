@@ -31,7 +31,7 @@ export default function ProductCard({ product, className, ...props }: Props) {
   return (
     <Card
       key={product.id}
-      className={cn("py-0 overflow-hidden gap-0 relative", className)}
+      className={cn("relative gap-0 overflow-hidden py-0", className)}
       {...props}
     >
       <Image
@@ -39,24 +39,24 @@ export default function ProductCard({ product, className, ...props }: Props) {
         alt={images[0].alt}
         width={images[0].width}
         height={images[0].height}
-        className="object-cover object-center bg-secondary aspect-[4/3]"
+        className="bg-secondary aspect-[4/3] object-cover object-center"
       />
       <CardContent className="flex h-full flex-col justify-between p-4">
         <div>
           <CardTitle className="mb-2 flex items-start justify-between">
-          <h2>
-            <Link
-              href={`/productos/${product.slug}`}
-              className="before:absolute before:inset-0 hover:underline focus:underline"
-            >
-              {name}
-            </Link>
-          </h2>
-          <span>{ARS.format(price)}</span>
-        </CardTitle>
-        <CardDescription>
-          <p className="line-clamp-2">{description}</p>
-        </CardDescription>
+            <h2>
+              <Link
+                href={`/productos/${product.slug}`}
+                className="before:absolute before:inset-0 hover:underline focus:underline"
+              >
+                {name}
+              </Link>
+            </h2>
+            <span>{ARS.format(price)}</span>
+          </CardTitle>
+          <CardDescription>
+            <p className="line-clamp-2">{description}</p>
+          </CardDescription>
         </div>
         <div className="after:to-background relative mt-3 flex gap-1 overflow-x-hidden after:absolute after:right-0 after:h-full after:w-4 after:bg-gradient-to-r after:from-transparent">
           {tags.map((tag) => (

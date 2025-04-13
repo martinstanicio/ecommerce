@@ -14,7 +14,7 @@ export default function Brand({
       {...props}
     >
       <Icon className="size-8" />
-      <span className="font-bold text-xl">{siteName}</span>
+      <span className="text-xl font-bold">{siteName}</span>
     </Link>
   );
 }

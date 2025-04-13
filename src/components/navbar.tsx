@@ -24,15 +24,15 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background">
-      <div className="container mx-auto flex max-md:justify-between p-4 gap-8 items-center">
+    <header className="bg-background sticky top-0 z-50 w-full border-b">
+      <div className="container mx-auto flex items-center gap-8 p-4 max-md:justify-between">
         {/* Mobile Menu */}
         <Sheet>
           <SheetTrigger asChild>
             <Button
               variant="outline"
               size="icon"
-              className="md:hidden max-md:order-last"
+              className="max-md:order-last md:hidden"
             >
               <Menu />
               <span className="sr-only">Abrir menú</span>
@@ -40,7 +40,7 @@ export default function Navbar() {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="p-6 flex flex-col justify-between items-center"
+            className="flex flex-col items-center justify-between p-6"
           >
             <SheetTitle className="sr-only">Navegación</SheetTitle>
             <SheetDescription className="sr-only">
@@ -57,7 +57,7 @@ export default function Navbar() {
                       <NavigationMenuLink
                         className={cn(
                           navigationMenuTriggerStyle(),
-                          "text-xl text-center",
+                          "text-center text-xl",
                         )}
                       >
                         {title}
@@ -76,7 +76,7 @@ export default function Navbar() {
         <Brand />
 
         {/* Desktop Navigation */}
-        <NavigationMenu className="max-md:hidden mr-auto">
+        <NavigationMenu className="mr-auto max-md:hidden">
           <NavigationMenuList>
             {navigation.map(({ title, href }) => (
               <NavigationMenuItem key={title}>

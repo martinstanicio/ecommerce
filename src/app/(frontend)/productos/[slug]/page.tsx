@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <main className="container mx-auto px-4 py-8 space-y-6">
+    <main className="container mx-auto space-y-6 px-4 py-8">
       <Carousel>
         <CarouselContent>
           {images.map((image) => {
@@ -78,7 +78,7 @@ export default async function ProductPage({ params }: Props) {
                   width={image.width}
                   height={image.height}
                   priority
-                  className="object-cover object-center bg-secondary aspect-[4/3]"
+                  className="bg-secondary aspect-[4/3] object-cover object-center"
                 />
               </CarouselItem>
             );
@@ -88,7 +88,7 @@ export default async function ProductPage({ params }: Props) {
         <CarouselNext />
       </Carousel>
 
-      <div className="prose col-span-5 w-full prose-a:no-underline">
+      <div className="prose prose-a:no-underline col-span-5 w-full">
         <header className="space-y-4">
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (

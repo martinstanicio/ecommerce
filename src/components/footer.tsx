@@ -6,14 +6,14 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t bg-background">
-      <div className="container mx-auto p-4 space-y-8">
-        <div className="flex justify-between items-center max-sm:flex-col gap-4">
+    <footer className="bg-background w-full border-t">
+      <div className="container mx-auto space-y-8 p-4">
+        <div className="flex items-center justify-between gap-4 max-sm:flex-col">
           <Brand />
           <SocialIcons />
         </div>
 
-        <div className="max-sm:text-center text-muted-foreground text-sm flex justify-between items-center max-sm:flex-col gap-2">
+        <div className="text-muted-foreground flex items-center justify-between gap-2 text-sm max-sm:flex-col max-sm:text-center">
           <p>
             &copy; {new Date().getFullYear()} {siteName} | Diseño de{" "}
             <Link

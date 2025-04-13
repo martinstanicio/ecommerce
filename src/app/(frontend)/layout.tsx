@@ -12,7 +12,7 @@ export default async function RootLayout({
   return (
     <html lang="es">
       <body>
-        <div className="bg-background text-foreground grid grid-rows-[auto_1fr_auto] min-h-screen">
+        <div className="bg-background text-foreground grid min-h-screen grid-rows-[auto_1fr_auto]">
           <Navbar />
           {children}
           <Footer />
