@@ -56,7 +56,7 @@ export default function ProductCard({ product, className, ...props }: Props) {
         <CardDescription>
           <p className="line-clamp-2">{description}</p>
         </CardDescription>
-        <div className="mt-3 flex flex-wrap gap-1">
+        <div className="after:to-background relative mt-3 flex gap-1 overflow-x-hidden after:absolute after:right-0 after:h-full after:w-4 after:bg-gradient-to-r after:from-transparent">
           {tags.map((tag) => (
             <Badge key={tag.id} variant="secondary">
               {tag.name}
