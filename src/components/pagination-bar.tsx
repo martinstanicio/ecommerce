@@ -55,7 +55,7 @@ export default function PaginationBar({
       urls[page] = url;
     });
     setPageUrls(urls);
-  }, [currentPage]);
+  }, [currentPage, pages]);
 
   return (
     <Pagination {...props}>

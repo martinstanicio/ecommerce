@@ -31,7 +31,7 @@ export default function SearchBar({
     else url.searchParams.delete("search");
 
     router.replace(url.toString());
-  }, [debouncedSearch]);
+  }, [debouncedSearch, firstMount, router]);
 
   return (
     <div className={cn("relative", className)} {...props}>
