@@ -22,7 +22,7 @@ export default function SimpleIcon({
         { "--icon-color": `#${icon.hex}`, ...style } as React.CSSProperties
       }
       className={cn(
-        "inline-block size-4 fill-current text-(--icon-color)",
+        "dark:text-foreground inline-block size-4 fill-current text-(--icon-color)",
         className,
       )}
       {...props}
