@@ -45,7 +45,6 @@ export const Products: CollectionConfig = {
       label: "Full Description",
       name: "fullDescription",
       type: "richText",
-      required: true,
       editor: lexicalEditor({
         features: ({ rootFeatures }) => [
           ...rootFeatures,

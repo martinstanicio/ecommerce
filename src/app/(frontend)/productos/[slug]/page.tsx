@@ -70,12 +70,16 @@ export default async function ProductPage({ params }: Props) {
 
         <ProductOrderOptions unitPrice={price} />
 
-        <Separator className="my-12" />
+        {fullDescription && (
+          <>
+            <Separator className="my-12" />
 
-        <div className="prose dark:prose-invert max-w-none space-y-4">
-          <h2>Detalles del producto</h2>
-          <RichText data={fullDescription} />
-        </div>
+            <div className="prose dark:prose-invert max-w-none space-y-4">
+              <h2>Detalles del producto</h2>
+              <RichText data={fullDescription} />
+            </div>
+          </>
+        )}
       </div>
     </main>
   );

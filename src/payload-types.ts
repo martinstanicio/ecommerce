@@ -191,7 +191,7 @@ export interface Product {
    * This will be used as the meta description for the product's page. It should be between 120 and 160 characters.
    */
   description: string;
-  fullDescription: {
+  fullDescription?: {
     root: {
       type: string;
       children: {
@@ -205,7 +205,7 @@ export interface Product {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   tags: (string | Tag)[];
   price: number;
   images: (string | Media)[];
