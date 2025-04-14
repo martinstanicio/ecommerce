@@ -1,5 +1,5 @@
+import ProductOrderOptions from "@/components/product-order-options";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Carousel,
   CarouselContent,
@@ -7,14 +7,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ARS } from "@/lib/currency";
+import { Separator } from "@/components/ui/separator";
 import getProductBySlug from "@/lib/get-product-by-slug";
 import { isPopulatedList } from "@/lib/is-populated";
 import config from "@/payload.config";
-import { ShoppingCart } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPayload } from "payload";
 
@@ -58,8 +56,8 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <main className="container mx-auto space-y-6 px-4 py-8">
-      <Carousel>
+    <main className="container mx-auto grid grid-cols-1 gap-8 px-4 py-8 lg:grid-cols-2 lg:gap-12">
+      <Carousel className="self-start">
         <CarouselContent>
           {images.map((image) => {
             if (
@@ -88,25 +86,21 @@ export default async function ProductPage({ params }: Props) {
         <CarouselNext />
       </Carousel>
 
-      <div className="prose prose-a:no-underline col-span-5 w-full">
-        <header className="space-y-4">
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Badge key={tag.id}>{tag.name}</Badge>
-            ))}
-          </div>
-          <h1>{name}</h1>
-          <p>{description}</p>
-        </header>
+      <div className="space-y-4">
+        <div className="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <Badge key={tag.id} variant="secondary">
+              {tag.name}
+            </Badge>
+          ))}
+        </div>
 
-        <p>{ARS.format(price)}</p>
+        <div>
+          <h1 className="text-3xl font-bold tracking-tight">{name}</h1>
+          <p className="text-muted-foreground mt-2">{description}</p>
+        </div>
 
-        <Button size="lg" asChild>
-          <Link href="#">
-            <ShoppingCart />
-            <span>Agregar al carrito</span>
-          </Link>
-        </Button>
+        <ProductOrderOptions unitPrice={price} />
       </div>
     </main>
   );
