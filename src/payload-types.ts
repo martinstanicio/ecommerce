@@ -172,7 +172,25 @@ export interface Product {
   id: string;
   slug: string;
   name: string;
+  /**
+   * This will be used as the meta description for the product's page. It should be between 120 and 160 characters.
+   */
   description: string;
+  fullDescription: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
   tags: (string | Tag)[];
   price: number;
   images: (string | Media)[];
@@ -303,6 +321,7 @@ export interface ProductsSelect<T extends boolean = true> {
   slug?: T;
   name?: T;
   description?: T;
+  fullDescription?: T;
   tags?: T;
   price?: T;
   images?: T;
