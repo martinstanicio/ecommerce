@@ -8,11 +8,13 @@ export const Media: CollectionConfig = {
   },
   fields: [
     {
+      label: "Alternative Text",
       name: "alt",
       type: "text",
       required: true,
     },
     {
+      label: "Products",
       name: "products",
       type: "join",
       collection: "products",

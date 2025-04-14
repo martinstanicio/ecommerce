@@ -12,12 +12,14 @@ export const Tags: CollectionConfig = {
   },
   fields: [
     {
+      label: "Name",
       name: "name",
       type: "text",
       required: true,
       unique: true,
     },
     {
+      label: "Products",
       name: "products",
       type: "join",
       collection: "products",

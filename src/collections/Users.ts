@@ -7,12 +7,14 @@ export const Users: CollectionConfig = {
   auth: { loginWithUsername: true },
   fields: [
     {
+      label: "Username",
       name: "username",
       type: "text",
       required: true,
       unique: true,
     },
     {
+      label: "Role",
       name: "role",
       type: "select",
       options: [
