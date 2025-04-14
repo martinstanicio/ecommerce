@@ -10,6 +10,7 @@ export default async function getProductBySlug(slug: string) {
     depth: 1,
     where: { slug: { equals: slug } },
     pagination: false,
+    limit: 1,
   });
 
   // If no products are found, index 0 will be undefined
