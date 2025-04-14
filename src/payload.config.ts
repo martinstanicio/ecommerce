@@ -3,6 +3,7 @@ import { Media } from "./collections/Media";
 import { Products } from "./collections/Products";
 import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
+import lexicalConfig from "./lexical.config";
 import { siteName } from "@/lib/metadata";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { payloadCloudPlugin } from "@payloadcms/payload-cloud";
@@ -34,7 +35,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Products, Tags],
-  editor: lexicalEditor(),
+  editor: lexicalEditor(lexicalConfig),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
