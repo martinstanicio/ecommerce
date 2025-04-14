@@ -6,15 +6,8 @@ import type { CollectionConfig, Where } from "payload";
 export const Users: CollectionConfig = {
   slug: "users",
   admin: { useAsTitle: "name" },
-  auth: { loginWithUsername: true },
+  auth: { loginWithUsername: { requireEmail: true, allowEmailLogin: true } },
   fields: [
-    {
-      label: "Username",
-      name: "username",
-      type: "text",
-      required: true,
-      unique: true,
-    },
     {
       label: "Name",
       name: "name",

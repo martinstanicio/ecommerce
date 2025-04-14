@@ -106,20 +106,34 @@ export interface Config {
   };
 }
 export interface UserAuthOperations {
-  forgotPassword: {
-    username: string;
-  };
-  login: {
-    password: string;
-    username: string;
-  };
+  forgotPassword:
+    | {
+        email: string;
+      }
+    | {
+        username: string;
+      };
+  login:
+    | {
+        email: string;
+        password: string;
+      }
+    | {
+        password: string;
+        username: string;
+      };
   registerFirstUser: {
     password: string;
     username: string;
+    email: string;
   };
-  unlock: {
-    username: string;
-  };
+  unlock:
+    | {
+        email: string;
+      }
+    | {
+        username: string;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -131,7 +145,7 @@ export interface User {
   role: 'admin' | 'editor';
   updatedAt: string;
   createdAt: string;
-  email?: string | null;
+  email: string;
   username: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
