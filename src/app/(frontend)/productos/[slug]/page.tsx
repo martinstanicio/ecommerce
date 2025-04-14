@@ -1,19 +1,12 @@
+import CarouselOrImage from "@/components/carousel-or-image";
 import ProductOrderOptions from "@/components/product-order-options";
 import { Badge } from "@/components/ui/badge";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import getProductBySlug from "@/lib/get-product-by-slug";
 import { isPopulatedList } from "@/lib/is-populated";
 import config from "@/payload.config";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import { Metadata, ResolvingMetadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getPayload } from "payload";
 
@@ -59,34 +52,7 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <main className="container mx-auto grid grid-cols-1 gap-8 px-4 py-8 lg:grid-cols-2 lg:gap-12">
-      <Carousel className="self-start">
-        <CarouselContent>
-          {images.map((image) => {
-            if (
-              typeof image.url !== "string" ||
-              typeof image.width !== "number" ||
-              typeof image.height !== "number"
-            ) {
-              throw new Error("Images must have `url`, `width` and `height`.");
-            }
-
-            return (
-              <CarouselItem key={image.id}>
-                <Image
-                  src={image.url}
-                  alt={image.alt}
-                  width={image.width}
-                  height={image.height}
-                  priority
-                  className="bg-secondary aspect-[4/3] object-cover object-center"
-                />
-              </CarouselItem>
-            );
-          })}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+      <CarouselOrImage images={images} />
 
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
