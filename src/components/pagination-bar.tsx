@@ -21,48 +21,40 @@ export default function PaginationBar({
   currentPage,
   ...props
 }: Props) {
-  const [prevUrl, setPrevUrl] = useState<URL>();
-  const [nextUrl, setNextUrl] = useState<URL>();
-  const [pageUrls, setPageUrls] = useState<Record<number, URL>>({});
+  const [baseUrl, setBaseUrl] = useState<string>("");
+
+  useEffect(() => {
+    setBaseUrl(window.location.href);
+  }, []);
 
   const pages = Array.from(
     { length: totalPages },
     (_, index) => index + 1,
   ).filter(
     (page) =>
-      page === currentPage ||
       page === 1 ||
       page === totalPages ||
       page === currentPage - 1 ||
+      page === currentPage ||
       page === currentPage + 1,
   );
+
   const hasPrevPage = currentPage > 1;
   const hasNextPage = currentPage < totalPages;
 
-  useEffect(() => {
-    const previous = new URL(window.location.href);
-    previous.searchParams.set("page", (currentPage - 1).toString());
-    setPrevUrl(previous);
-
-    const next = new URL(window.location.href);
-    next.searchParams.set("page", (currentPage + 1).toString());
-    setNextUrl(next);
-
-    const urls: typeof pageUrls = {};
-    pages.forEach((page) => {
-      const url = new URL(window.location.href);
-      url.searchParams.set("page", page.toString());
-      urls[page] = url;
-    });
-    setPageUrls(urls);
-  }, [currentPage, pages]);
+  const createPageUrl = (page: number) => {
+    if (!baseUrl) return "#";
+    const url = new URL(baseUrl);
+    url.searchParams.set("page", page.toString());
+    return url.toString();
+  };
 
   return (
     <Pagination {...props}>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            href={prevUrl || "#"}
+            href={hasPrevPage ? createPageUrl(currentPage - 1) : "#"}
             replace
             disabled={!hasPrevPage}
           />
@@ -81,7 +73,7 @@ export default function PaginationBar({
               )}
               <PaginationItem>
                 <PaginationLink
-                  href={pageUrls[page] || "#"}
+                  href={createPageUrl(page)}
                   replace
                   isActive={page === currentPage}
                 >
@@ -94,7 +86,7 @@ export default function PaginationBar({
 
         <PaginationItem>
           <PaginationNext
-            href={nextUrl || "#"}
+            href={hasNextPage ? createPageUrl(currentPage + 1) : "#"}
             replace
             disabled={!hasNextPage}
           />
