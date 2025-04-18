@@ -14,7 +14,7 @@ const MAX_QUANTITY = 999;
 type Props = { unitPrice: number };
 
 export default function ProductOrderOptions({ unitPrice }: Props) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(MIN_QUANTITY);
   const total = unitPrice * quantity;
 
   return (
@@ -22,7 +22,7 @@ export default function ProductOrderOptions({ unitPrice }: Props) {
       <p className="flex items-center gap-2 font-bold">
         <span className="text-3xl">{ARS.format(unitPrice)}</span>
 
-        {quantity != 1 && (
+        {quantity > 1 && (
           <>
             <span className="text-muted-foreground text-xl">&times;</span>
             <span className="text-muted-foreground text-xl">
