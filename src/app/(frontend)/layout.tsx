@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import "@/globals.css";
 
 export { metadata } from "@/lib/metadata";
@@ -15,6 +16,7 @@ export default async function FrontendLayout({ children }: Props) {
           {children}
           <Footer />
         </div>
+        <Toaster richColors closeButton duration={8000} theme="light" />
       </body>
     </html>
   );

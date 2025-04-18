@@ -11,10 +11,12 @@ import {
 } from "./ui/form";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { createForm } from "@/lib/create-form";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import * as z from "zod";
 
 const formSchema = z.object({
@@ -63,25 +65,27 @@ export default function ContactForm({ className, ...props }: Props) {
   });
 
   async function onSubmit({
-    name,
-    email,
-    subject,
-    message,
     favoriteColor,
+    ...formData
   }: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
 
-    try {
-      // `favoriteColor` is a hidden field, so if it has a value it means a bot filled it in
-      if (favoriteColor) return;
-      // ...
+    // `favoriteColor` is a hidden field, so if it has a value it means a bot filled it in
+    if (favoriteColor) return;
 
+    const response = await createForm(formData);
+
+    if (response.success) {
       form.reset();
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setIsSubmitting(false);
+      toast.success("Su mensaje ha sido enviado con éxito.");
+    } else {
+      toast.error("Hubo un error al enviar su mensaje.", {
+        description:
+          "Por favor, inténtelo de nuevo más tarde. Si el problema persiste, contáctenos directamente a través de nuestro correo electrónico.",
+      });
     }
+
+    setIsSubmitting(false);
   }
 
   return (
