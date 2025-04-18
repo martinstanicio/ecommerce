@@ -27,13 +27,13 @@ export default async function Productos({ searchParams }: Props) {
 
   return (
     <div className="container mx-auto space-y-6 px-4 py-8">
-      <div>
+      <header>
         <h1 className="mb-2 text-3xl font-bold">Productos</h1>
         <p className="text-muted-foreground">
           Descubrí nuestra amplia gama de productos de alta calidad para cada
           necesidad.
         </p>
-      </div>
+      </header>
 
       <div className="flex flex-col gap-4 md:flex-row">
         <SearchBar className="flex-1" />
