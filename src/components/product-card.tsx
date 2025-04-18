@@ -30,7 +30,6 @@ export default function ProductCard({ product, className, ...props }: Props) {
 
   return (
     <Card
-      key={product.id}
       className={cn("relative gap-0 overflow-hidden py-0", className)}
       {...props}
     >
