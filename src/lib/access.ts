@@ -37,3 +37,5 @@ export const admin: Access = ({ req: { user } }) => {
 
   return user.role === "admin";
 };
+
+export const none: Access = () => false;
