@@ -7,7 +7,7 @@ import { Product } from "@/payload-types";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = React.HTMLProps<HTMLDivElement> & { product: Product };
+type Props = React.ComponentProps<"div"> & { product: Product };
 
 export default function ProductCard({ product, className, ...props }: Props) {
   const { name, description, tags, price, images } = product;
