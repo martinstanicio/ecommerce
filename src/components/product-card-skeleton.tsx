@@ -15,18 +15,18 @@ export default function ProductCardSkeleton({
       <CardContent className="flex h-full flex-col justify-between p-4">
         <div className="space-y-4">
           <CardTitle className="flex items-start justify-between">
-            <Skeleton className="h-6 w-[16ch]" />
-            <Skeleton className="h-6 w-[8ch]" />
+            <Skeleton className="h-4 w-[16ch]" />
+            <Skeleton className="h-4 w-[8ch]" />
           </CardTitle>
           <CardDescription className="space-y-1">
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-2/3" />
+            <Skeleton className="h-3 w-full" />
+            <Skeleton className="h-3 w-2/3" />
           </CardDescription>
         </div>
         <div className="after:to-background relative mt-4 flex gap-1 overflow-x-hidden after:absolute after:right-0 after:h-full after:w-4 after:bg-gradient-to-r after:from-transparent">
           {tags.map((_, i) => (
             <Badge key={i} variant="secondary">
-              <Skeleton className="h-2 w-[6ch]"></Skeleton>
+              <Skeleton className="h-4 w-[6ch]"></Skeleton>
             </Badge>
           ))}
         </div>
