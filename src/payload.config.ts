@@ -1,4 +1,5 @@
 // storage-adapter-import-placeholder
+import { Forms } from "./collections/Forms";
 import { Media } from "./collections/Media";
 import { Products } from "./collections/Products";
 import { Tags } from "./collections/Tags";
@@ -34,7 +35,7 @@ export default buildConfig({
       titleSuffix: `| ${siteName}`,
     },
   },
-  collections: [Users, Media, Products, Tags],
+  collections: [Users, Media, Products, Tags, Forms],
   editor: lexicalEditor(lexicalConfig),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
