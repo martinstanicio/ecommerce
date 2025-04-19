@@ -1,29 +1,22 @@
 import FiltersBar from "@/components/filters-bar";
-import PaginationBar from "@/components/pagination-bar";
-import ProductsGrid from "@/components/products-grid";
+import ProductsGridAndPagination from "@/components/products-grid-and-pagination";
+import ProductsGridSkeleton from "@/components/products-grid-skeleton";
 import SearchBar from "@/components/search-bar";
 import SortingBar from "@/components/sorting-bar";
 import config from "@/payload.config";
 import { Metadata } from "next";
 import { getPayload } from "payload";
+import { Suspense } from "react";
 
 type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export default async function Productos({ searchParams }: Props) {
-  const { sort = "-updatedAt", page = "1", search } = await searchParams;
-  const payload = await getPayload({ config });
-  const products = await payload.find({
-    collection: "products",
-    limit: 12,
-    depth: 1,
-    page: +page,
-    sort: sort,
-    where: {
-      or: [{ name: { like: search } }, { description: { like: search } }],
-    },
-  });
+  const { sort: _sort, page: _page, search: _search } = await searchParams;
+  const sort = typeof _sort === "string" ? _sort : "-updatedAt";
+  const page = typeof _page === "string" ? +_page : 1;
+  const search = typeof _search === "string" ? _search : "";
 
   return (
     <div className="container mx-auto space-y-6 px-4 py-8">
@@ -44,12 +37,10 @@ export default async function Productos({ searchParams }: Props) {
         </div>
       </div>
 
-      <ProductsGrid products={products.docs} />
-
-      <PaginationBar
-        totalPages={products.totalPages}
-        currentPage={products.page || +page}
-      />
+      <Suspense fallback={<ProductsGridSkeleton />}>
+        {/* For Suspense to work, data must be awaited in a differnt async component */}
+        <ProductsGridAndPagination page={page} sort={sort} search={search} />
+      </Suspense>
     </div>
   );
 }
