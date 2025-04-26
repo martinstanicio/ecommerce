@@ -13,10 +13,19 @@ type Props = {
 };
 
 export default async function Productos({ searchParams }: Props) {
-  const { sort: _sort, page: _page, search: _search } = await searchParams;
+  const {
+    sort: _sort,
+    page: _page,
+    search: _search,
+    tags: _tags,
+  } = await searchParams;
   const sort = typeof _sort === "string" ? _sort : "-updatedAt";
   const page = typeof _page === "string" ? +_page : 1;
   const search = typeof _search === "string" ? _search : "";
+  const tags: string[] = [];
+
+  if (typeof _tags === "string") tags.push(_tags);
+  if (Array.isArray(_tags)) tags.push(..._tags);
 
   return (
     <div className="container mx-auto space-y-6 px-4 py-8">
@@ -39,7 +48,12 @@ export default async function Productos({ searchParams }: Props) {
 
       <Suspense fallback={<ProductsGridSkeleton />}>
         {/* For Suspense to work, data must be awaited in a differnt async component */}
-        <ProductsGridAndPagination page={page} sort={sort} search={search} />
+        <ProductsGridAndPagination
+          page={page}
+          sort={sort}
+          search={search}
+          tags={tags}
+        />
       </Suspense>
     </div>
   );
