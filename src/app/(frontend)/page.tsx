@@ -1,3 +1,9 @@
+import SearchFocusedHero from "@/components/hero/search-focused-hero/main";
+
 export default function HomePage() {
-  return <div></div>;
+  return (
+    <div>
+      <SearchFocusedHero />
+    </div>
+  );
 }
