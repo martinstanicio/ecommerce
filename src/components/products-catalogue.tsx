@@ -32,7 +32,12 @@ export default async function ProductsCatalogue({
       collection: "tags",
       depth: 1,
       where: { name: { in: tagNames } },
-      select: { createdAt: false, updatedAt: false },
+      select: {
+        createdAt: false,
+        updatedAt: false,
+        name: false,
+        products: false,
+      },
     });
 
     tags.docs.forEach((tag) => {
