@@ -13,7 +13,6 @@ export default async function PopularTags({
     collection: "tags",
     depth: 0,
     pagination: false,
-    limit: 100,
     sort: "name",
     select: { createdAt: false, updatedAt: false },
   });
