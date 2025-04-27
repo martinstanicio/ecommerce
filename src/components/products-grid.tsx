@@ -1,9 +1,12 @@
 "use client";
 
-import ProductCard from "@/components/product-card";
-import { Product } from "@/payload-types";
+import ProductCard, { SimplifiedProduct } from "@/components/product-card";
 
-export default function ProductsGrid({ products }: { products: Product[] }) {
+export default function ProductsGrid({
+  products,
+}: {
+  products: SimplifiedProduct[];
+}) {
   if (products.length === 0) {
     return (
       <main className="py-12 text-center">

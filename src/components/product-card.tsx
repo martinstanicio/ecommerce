@@ -7,10 +7,15 @@ import { Product } from "@/payload-types";
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = React.ComponentProps<"div"> & { product: Product };
+export type SimplifiedProduct = Pick<
+  Product,
+  "id" | "slug" | "name" | "description" | "tags" | "price" | "images"
+>;
+
+type Props = React.ComponentProps<"div"> & { product: SimplifiedProduct };
 
 export default function ProductCard({ product, className, ...props }: Props) {
-  const { name, description, tags, price, images } = product;
+  const { slug, name, description, tags, price, images } = product;
 
   if (!isPopulatedList(images)) {
     throw new Error("Product images must be populated. Try increasing depth.");
@@ -45,7 +50,7 @@ export default function ProductCard({ product, className, ...props }: Props) {
           <CardTitle className="mb-2 flex items-start justify-between">
             <h2>
               <Link
-                href={`/productos/${product.slug}`}
+                href={`/productos/${slug}`}
                 className="before:absolute before:inset-0 hover:underline focus:underline"
               >
                 {name}
