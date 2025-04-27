@@ -11,7 +11,7 @@ type Props = {
   limit?: number;
 };
 
-export default async function ProductsGridAndPagination({
+export default async function ProductsCatalogue({
   page,
   sort,
   search,

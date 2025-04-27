@@ -1,5 +1,5 @@
 import FiltersBar from "@/components/filters-bar";
-import ProductsGridAndPagination from "@/components/products-grid-and-pagination";
+import ProductsCatalogue from "@/components/products-catalogue";
 import ProductsGridSkeleton from "@/components/products-grid-skeleton";
 import SearchBar from "@/components/search-bar";
 import SortingBar from "@/components/sorting-bar";
@@ -48,7 +48,7 @@ export default async function Productos({ searchParams }: Props) {
 
       <Suspense fallback={<ProductsGridSkeleton />}>
         {/* For Suspense to work, data must be awaited in a differnt async component */}
-        <ProductsGridAndPagination
+        <ProductsCatalogue
           page={page}
           sort={sort}
           search={search}
