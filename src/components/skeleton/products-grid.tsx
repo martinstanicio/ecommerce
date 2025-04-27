@@ -1,6 +1,4 @@
-"use client";
-
-import ProductCardSkeleton from "./product-card-skeleton";
+import ProductCardSkeleton from "./product-card";
 import { cn } from "@/lib/utils";
 
 export default function ProductsGridSkeleton({

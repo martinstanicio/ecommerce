@@ -1,6 +1,6 @@
-import { Badge } from "./ui/badge";
-import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
-import { Skeleton } from "./ui/skeleton";
+import { Badge } from "../ui/badge";
+import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
+import { Skeleton } from "../ui/skeleton";
 import { cn } from "@/lib/utils";
 
 export default function ProductCardSkeleton({
@@ -11,7 +11,7 @@ export default function ProductCardSkeleton({
 
   return (
     <Card className={cn("gap-0 overflow-hidden py-0", className)} {...props}>
-      <Skeleton className="aspect-[4/3]" />
+      <Skeleton className="aspect-[4/3] rounded-none" />
       <CardContent className="flex h-full flex-col justify-between p-4">
         <div className="space-y-4">
           <CardTitle className="flex items-start justify-between">

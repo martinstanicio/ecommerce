@@ -1,5 +1,5 @@
 import ProductsCatalogue from "@/components/products-catalogue";
-import ProductsGridSkeleton from "@/components/products-grid-skeleton";
+import ProductsCatalogueSkeleton from "@/components/skeleton/products-catalogue";
 import config from "@/payload.config";
 import { Metadata } from "next";
 import { getPayload } from "payload";
@@ -34,7 +34,7 @@ export default async function Productos({ searchParams }: Props) {
         </p>
       </header>
 
-      <Suspense fallback={<ProductsGridSkeleton />}>
+      <Suspense fallback={<ProductsCatalogueSkeleton />}>
         {/* For Suspense to work, data must be awaited in a differnt async component */}
         <ProductsCatalogue
           page={page}
