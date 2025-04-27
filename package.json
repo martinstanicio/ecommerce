@@ -22,6 +22,7 @@
     "@payloadcms/payload-cloud": "latest",
     "@payloadcms/richtext-lexical": "latest",
     "@payloadcms/translations": "^3.25.0",
+    "@radix-ui/react-checkbox": "^1.2.3",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-label": "^2.1.2",
     "@radix-ui/react-navigation-menu": "^1.2.5",
@@ -53,6 +54,7 @@
     "tailwindcss": "^4.0.10",
     "tailwindcss-animate": "^1.0.7",
     "use-debounce": "^10.0.4",
+    "vaul": "^1.1.2",
     "zod": "^3.24.3"
   },
   "devDependencies": {
