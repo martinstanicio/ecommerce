@@ -1,5 +1,8 @@
+import FiltersBar from "./filters-bar";
 import PaginationBar from "./pagination-bar";
 import ProductsGrid from "./products-grid";
+import SearchBar from "./search-bar";
+import SortingBar from "./sorting-bar";
 import config from "@/payload.config";
 import { getPayload, Where } from "payload";
 
@@ -56,6 +59,15 @@ export default async function ProductsCatalogue({
 
   return (
     <>
+      <div className="flex flex-col gap-4 md:flex-row">
+        <SearchBar className="flex-1" />
+
+        <div className="flex gap-2 md:w-full md:max-w-xs">
+          <SortingBar />
+          <FiltersBar />
+        </div>
+      </div>
+
       <ProductsGrid products={products.docs} />
 
       <PaginationBar

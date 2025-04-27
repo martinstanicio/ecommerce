@@ -1,8 +1,5 @@
-import FiltersBar from "@/components/filters-bar";
 import ProductsCatalogue from "@/components/products-catalogue";
 import ProductsGridSkeleton from "@/components/products-grid-skeleton";
-import SearchBar from "@/components/search-bar";
-import SortingBar from "@/components/sorting-bar";
 import config from "@/payload.config";
 import { Metadata } from "next";
 import { getPayload } from "payload";
@@ -36,15 +33,6 @@ export default async function Productos({ searchParams }: Props) {
           necesidad.
         </p>
       </header>
-
-      <div className="flex flex-col gap-4 md:flex-row">
-        <SearchBar className="flex-1" />
-
-        <div className="flex gap-2 md:w-full md:max-w-xs">
-          <SortingBar />
-          <FiltersBar />
-        </div>
-      </div>
 
       <Suspense fallback={<ProductsGridSkeleton />}>
         {/* For Suspense to work, data must be awaited in a differnt async component */}
