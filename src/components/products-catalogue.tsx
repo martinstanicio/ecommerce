@@ -23,6 +23,15 @@ export default async function ProductsCatalogue({
 }: Props) {
   const conditions: Where[] = [];
   const payload = await getPayload({ config });
+  const tags = await payload.find({
+    collection: "tags",
+    depth: 1,
+    select: {
+      createdAt: false,
+      updatedAt: false,
+      products: false,
+    },
+  });
 
   if (search) {
     conditions.push({
@@ -31,19 +40,8 @@ export default async function ProductsCatalogue({
   }
 
   if (tagNames.length) {
-    const tags = await payload.find({
-      collection: "tags",
-      depth: 1,
-      where: { name: { in: tagNames } },
-      select: {
-        createdAt: false,
-        updatedAt: false,
-        name: false,
-        products: false,
-      },
-    });
-
     tags.docs.forEach((tag) => {
+      if (!tagNames.includes(tag.name)) return;
       conditions.push({ tags: { equals: tag.id } });
     });
   }
@@ -64,7 +62,7 @@ export default async function ProductsCatalogue({
 
         <div className="flex gap-2 md:w-full md:max-w-xs">
           <SortingBar />
-          <FiltersBar />
+          <FiltersBar tags={tags.docs} />
         </div>
       </div>
 
