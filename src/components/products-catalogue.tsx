@@ -1,11 +1,11 @@
 import AppliedFiltersList from "./applied-filters-list";
 import ClearFiltersButton from "./clear-filters-button";
-import { SimplifiedTag } from "./filters-bar/common";
 import FiltersBar from "./filters-bar/main";
 import PaginationBar from "./pagination-bar";
 import ProductsGrid from "./products-grid";
 import SearchBar from "./search-bar";
 import SortingBar from "./sorting-bar";
+import { SimplifiedTag } from "@/lib/simplified-types";
 import config from "@/payload.config";
 import { getPayload, PaginatedDocs, Where } from "payload";
 

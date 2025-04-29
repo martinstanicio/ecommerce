@@ -1,6 +1,7 @@
 "use client";
 
-import ProductCard, { SimplifiedProduct } from "@/components/product-card";
+import ProductCard from "@/components/product-card";
+import { SimplifiedProduct } from "@/lib/simplified-types";
 
 export default function ProductsGrid({
   products,

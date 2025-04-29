@@ -19,10 +19,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/drawer";
-import { SimplifiedTag } from "./common";
 import TagsList from "./tags-list";
 import Trigger from "./trigger";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { SimplifiedTag } from "@/lib/simplified-types";
 import { useState } from "react";
 
 const title = "Filtrar por categoría";

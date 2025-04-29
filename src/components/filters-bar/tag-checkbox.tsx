@@ -2,7 +2,7 @@
 
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
-import { SimplifiedTag } from "./common";
+import { SimplifiedTag } from "@/lib/simplified-types";
 import { cn } from "@/lib/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";

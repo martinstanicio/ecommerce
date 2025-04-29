@@ -2,15 +2,10 @@ import { Badge } from "./ui/badge";
 import { Card, CardContent, CardDescription, CardTitle } from "./ui/card";
 import { ARS } from "@/lib/currency";
 import { isPopulatedList } from "@/lib/is-populated";
+import { SimplifiedProduct } from "@/lib/simplified-types";
 import { cn } from "@/lib/utils";
-import { Product } from "@/payload-types";
 import Image from "next/image";
 import Link from "next/link";
-
-export type SimplifiedProduct = Pick<
-  Product,
-  "id" | "slug" | "name" | "description" | "tags" | "price" | "images"
->;
 
 type Props = React.ComponentProps<"div"> & { product: SimplifiedProduct };
 

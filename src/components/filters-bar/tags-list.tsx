@@ -1,5 +1,5 @@
-import { SimplifiedTag } from "./common";
 import TagCheckbox from "./tag-checkbox";
+import { SimplifiedTag } from "@/lib/simplified-types";
 import { cn } from "@/lib/utils";
 
 type Props = React.ComponentProps<"div"> & {

@@ -1,5 +1,5 @@
-import { SimplifiedTag } from "./filters-bar/common";
 import { Badge } from "./ui/badge";
+import { SimplifiedTag } from "@/lib/simplified-types";
 import { cn } from "@/lib/utils";
 
 type Props = React.ComponentProps<"div"> & {
