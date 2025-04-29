@@ -10,7 +10,7 @@ import {
 import { useRouter, useSearchParams } from "next/navigation";
 
 const sortingOptions = [
-  { value: "-updatedAt", label: "Original" },
+  { value: "-updatedAt", label: "Orden original" },
   { value: "price", label: "Precio: menor a mayor" },
   { value: "-price", label: "Precio: mayor a menor" },
   { value: "name", label: "Nombre: de A a Z" },
