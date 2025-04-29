@@ -44,7 +44,7 @@ export default function FiltersBar({ tags, ...props }: Props) {
         <DialogTrigger asChild>
           <Trigger {...props} />
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>{title}</DialogTitle>
             <DialogDescription>{description}</DialogDescription>
