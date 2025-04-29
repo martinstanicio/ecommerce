@@ -3,10 +3,8 @@
 import { Button } from "../ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -52,11 +50,6 @@ export default function FiltersBar({ tags, ...props }: Props) {
             <DialogDescription>{description}</DialogDescription>
           </DialogHeader>
           <TagsList tags={tags} />
-          <DialogFooter className="pt-2">
-            <DialogClose asChild>
-              <Button variant="outline">{exit}</Button>
-            </DialogClose>
-          </DialogFooter>
         </DialogContent>
       </Dialog>
     );
