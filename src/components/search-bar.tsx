@@ -3,7 +3,7 @@
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 
@@ -12,26 +12,24 @@ export default function SearchBar({
   ...props
 }: React.ComponentProps<"div">) {
   const router = useRouter();
-  const [firstMount, setFirstMount] = useState(true);
-  const [search, setSearch] = useState("");
+  const searchParams = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("search") || "");
   const [debouncedSearch] = useDebounce(search, 300);
 
-  useEffect(() => {
-    const url = new URL(window.location.href);
+  useEffect(
+    () => {
+      const newParams = new URLSearchParams(searchParams);
 
-    if (firstMount) {
-      setFirstMount(false);
-      const defaultSearchValue = url.searchParams.get("search");
+      if (debouncedSearch) newParams.set("search", debouncedSearch);
+      else newParams.delete("search");
 
-      if (defaultSearchValue) setSearch(defaultSearchValue);
-      return;
-    }
-
-    if (debouncedSearch) url.searchParams.set("search", debouncedSearch);
-    else url.searchParams.delete("search");
-
-    router.replace(url.toString());
-  }, [debouncedSearch, firstMount, router]);
+      router.replace(`?${newParams.toString()}`);
+    },
+    // Depends on searchParams and router, but I only want it to run when
+    // debouncedSearch changes. Otherwise it runs twice every debounced update
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [debouncedSearch],
+  );
 
   return (
     <div className={cn("relative", className)} {...props}>
