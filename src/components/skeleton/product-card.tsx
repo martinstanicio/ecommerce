@@ -25,9 +25,9 @@ export default function ProductCardSkeleton({
         </div>
         <div className="after:to-background relative mt-4 flex gap-1 overflow-x-hidden after:absolute after:right-0 after:h-full after:w-4 after:bg-gradient-to-r after:from-transparent">
           {tags.map((_, i) => (
-            <Badge key={i} variant="secondary">
-              <Skeleton className="h-4 w-[6ch]"></Skeleton>
-            </Badge>
+            <Skeleton key={i} className="w-[6ch]">
+              <Badge variant="secondary" />
+            </Skeleton>
           ))}
         </div>
       </CardContent>
