@@ -1,3 +1,4 @@
+import AppliedFiltersListSkeleton from "./applied-filters-list";
 import FiltersBarSkeleton from "./filters-bar";
 import PaginationBarSkeleton from "./pagination-bar";
 import ProductsGridSkeleton from "./products-grid";
@@ -15,6 +16,8 @@ export default function ProductsCatalogueSkeleton() {
           <FiltersBarSkeleton />
         </div>
       </div>
+
+      <AppliedFiltersListSkeleton />
 
       <ProductsGridSkeleton />
 

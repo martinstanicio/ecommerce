@@ -1,3 +1,4 @@
+import AppliedFiltersList from "./applied-filters-list";
 import ClearFiltersButton from "./clear-filters-button";
 import FiltersBar from "./filters-bar/main";
 import PaginationBar from "./pagination-bar";
@@ -72,6 +73,8 @@ export default async function ProductsCatalogue({
           <ClearFiltersButton disabled={!search && !tagNames.length} />
         </div>
       </div>
+
+      <AppliedFiltersList search={search} appliedTags={tagNames} />
 
       <ProductsGrid products={products.docs} />
 
