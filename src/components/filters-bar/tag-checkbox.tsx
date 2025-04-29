@@ -12,23 +12,23 @@ type Props = React.ComponentProps<"div"> & {
 };
 
 export default function TagCheckbox({ tag, className, ...props }: Props) {
-  const { id, name } = tag;
+  const { id, slug, name } = tag;
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isChecked, setIsChecked] = useState(
-    searchParams.getAll("tags").includes(name),
+    searchParams.getAll("tags").includes(slug),
   );
 
   const handleCheckedChange = (checked: boolean) => {
     const newParams = new URLSearchParams(searchParams);
 
-    const currentTags = searchParams.getAll("tags");
-    const newTags = checked
-      ? [...currentTags, name]
-      : currentTags.filter((tag) => tag !== name);
+    const currentTagSlugs = searchParams.getAll("tags");
+    const newTagSlugs = checked
+      ? [...currentTagSlugs, slug]
+      : currentTagSlugs.filter((t) => t !== slug);
 
     newParams.delete("tags");
-    newTags.forEach((tag) => newParams.append("tags", tag));
+    newTagSlugs.forEach((t) => newParams.append("tags", t));
 
     router.replace(`?${newParams.toString()}`);
     setIsChecked(checked);

@@ -220,6 +220,7 @@ export interface Product {
  */
 export interface Tag {
   id: string;
+  slug: string;
   name: string;
   products?: {
     docs?: (string | Product)[];
@@ -369,6 +370,7 @@ export interface ProductsSelect<T extends boolean = true> {
  * via the `definition` "tags_select".
  */
 export interface TagsSelect<T extends boolean = true> {
+  slug?: T;
   name?: T;
   products?: T;
   updatedAt?: T;

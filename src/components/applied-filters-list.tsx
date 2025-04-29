@@ -1,9 +1,10 @@
+import { SimplifiedTag } from "./filters-bar/common";
 import { Badge } from "./ui/badge";
 import { cn } from "@/lib/utils";
 
 type Props = React.ComponentProps<"div"> & {
   search: string;
-  appliedTags: string[];
+  appliedTags: SimplifiedTag[];
 };
 
 export default function AppliedFiltersList({
@@ -20,9 +21,9 @@ export default function AppliedFiltersList({
       {search && <Badge variant="default">&quot;{search}&quot;</Badge>}
 
       {appliedTags.length ? (
-        appliedTags.map((tag, i) => (
-          <Badge key={i} variant="secondary">
-            {tag}
+        appliedTags.map(({ id, name }) => (
+          <Badge key={id} variant="secondary">
+            {name}
           </Badge>
         ))
       ) : (

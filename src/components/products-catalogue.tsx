@@ -1,12 +1,13 @@
 import AppliedFiltersList from "./applied-filters-list";
 import ClearFiltersButton from "./clear-filters-button";
+import { SimplifiedTag } from "./filters-bar/common";
 import FiltersBar from "./filters-bar/main";
 import PaginationBar from "./pagination-bar";
 import ProductsGrid from "./products-grid";
 import SearchBar from "./search-bar";
 import SortingBar from "./sorting-bar";
 import config from "@/payload.config";
-import { getPayload, Where } from "payload";
+import { getPayload, PaginatedDocs, Where } from "payload";
 
 type Props = {
   page: number;
@@ -20,12 +21,13 @@ export default async function ProductsCatalogue({
   page,
   sort,
   search,
-  tags: tagNames,
+  tags: tagSlugs,
   limit = 12,
 }: Props) {
   const conditions: Where[] = [];
+  const appliedTags: SimplifiedTag[] = [];
   const payload = await getPayload({ config });
-  const tags = await payload.find({
+  const tags: PaginatedDocs<SimplifiedTag> = await payload.find({
     collection: "tags",
     depth: 1,
     select: {
@@ -41,10 +43,12 @@ export default async function ProductsCatalogue({
     });
   }
 
-  if (tagNames.length) {
+  if (tagSlugs.length) {
     tags.docs.forEach((tag) => {
-      if (!tagNames.includes(tag.name)) return;
+      if (!tagSlugs.includes(tag.slug)) return;
+
       conditions.push({ tags: { equals: tag.id } });
+      appliedTags.push(tag);
     });
   }
 
@@ -70,11 +74,11 @@ export default async function ProductsCatalogue({
         <div className="flex gap-2 md:w-full md:max-w-xs">
           <SortingBar />
           <FiltersBar tags={tags.docs} />
-          <ClearFiltersButton disabled={!search && !tagNames.length} />
+          <ClearFiltersButton disabled={!search && !tagSlugs.length} />
         </div>
       </div>
 
-      <AppliedFiltersList search={search} appliedTags={tagNames} />
+      <AppliedFiltersList search={search} appliedTags={appliedTags} />
 
       <ProductsGrid products={products.docs} />
 

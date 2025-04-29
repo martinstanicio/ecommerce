@@ -17,6 +17,8 @@ export default async function PopularTags({
     select: { createdAt: false, updatedAt: false },
   });
 
+  // Sort tags by the number of products in descending order
+  // and take the top 4
   const tags = response.docs
     .sort((a, b) => {
       const aCount = a.products?.docs?.length;
@@ -31,9 +33,9 @@ export default async function PopularTags({
       className={cn("flex flex-wrap justify-center gap-2", className)}
       {...props}
     >
-      {tags.map(({ id, name }) => (
+      {tags.map(({ id, slug, name }) => (
         <Button variant="secondary" size="sm" key={id} asChild>
-          <Link href={`/productos?tags=${encodeURIComponent(name)}`}>
+          <Link href={`/productos?tags=${encodeURIComponent(slug)}`}>
             {name}
           </Link>
         </Button>
