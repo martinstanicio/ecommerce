@@ -16,6 +16,10 @@ export default function SearchBar({
   const [search, setSearch] = useState(searchParams.get("search") || "");
   const [debouncedSearch] = useDebounce(search, 300);
 
+  useEffect(() => {
+    setSearch(searchParams.get("search") || "");
+  }, [searchParams]);
+
   useEffect(
     () => {
       const newParams = new URLSearchParams(searchParams);
