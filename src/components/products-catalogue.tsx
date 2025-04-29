@@ -1,3 +1,4 @@
+import ClearFiltersButton from "./clear-filters-button";
 import FiltersBar from "./filters-bar/main";
 import PaginationBar from "./pagination-bar";
 import ProductsGrid from "./products-grid";
@@ -68,6 +69,7 @@ export default async function ProductsCatalogue({
         <div className="flex gap-2 md:w-full md:max-w-xs">
           <SortingBar />
           <FiltersBar tags={tags.docs} />
+          <ClearFiltersButton disabled={!search && !tagNames.length} />
         </div>
       </div>
 
