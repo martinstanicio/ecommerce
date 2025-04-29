@@ -1,4 +1,4 @@
-import FiltersBar from "./filters-bar";
+import FiltersBar from "./filters-bar/main";
 import PaginationBar from "./pagination-bar";
 import ProductsGrid from "./products-grid";
 import SearchBar from "./search-bar";
