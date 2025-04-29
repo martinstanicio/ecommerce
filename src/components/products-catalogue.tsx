@@ -3,10 +3,7 @@ import PaginationBar from "./pagination-bar";
 import ProductsGrid from "./products-grid";
 import SearchBar from "./search-bar";
 import SortingBar from "./sorting-bar";
-import { Button } from "./ui/button";
 import config from "@/payload.config";
-import { Trash } from "lucide-react";
-import Link from "next/link";
 import { getPayload, Where } from "payload";
 
 type Props = {
