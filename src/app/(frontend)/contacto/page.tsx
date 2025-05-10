@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { siteName } from "@/lib/metadata";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Metadata } from "next";
 
@@ -113,6 +114,7 @@ export default function Contacto() {
           <Card className="overflow-hidden p-0">
             <CardContent className="p-0">
               <iframe
+                title={`Ubicación de ${siteName} en el mapa`}
                 src={map}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
