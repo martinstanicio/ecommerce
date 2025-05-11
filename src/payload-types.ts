@@ -96,8 +96,12 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'highlighted-stats': HighlightedStats;
+  };
+  globalsSelect: {
+    'highlighted-stats': HighlightedStatsSelect<false> | HighlightedStatsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -420,6 +424,36 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "highlighted-stats".
+ */
+export interface HighlightedStats {
+  id: string;
+  stats: {
+    value: string;
+    description: string;
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "highlighted-stats_select".
+ */
+export interface HighlightedStatsSelect<T extends boolean = true> {
+  stats?:
+    | T
+    | {
+        value?: T;
+        description?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
