@@ -26,8 +26,8 @@ export default async function Productos({ searchParams }: Props) {
 
   return (
     <div className="container mx-auto space-y-6 px-4 py-8">
-      <header>
-        <h1 className="mb-2 text-3xl font-bold">Productos</h1>
+      <header className="space-y-2">
+        <h1 className="text-3xl font-bold">Productos</h1>
         <p className="text-muted-foreground">
           Descubrí nuestra amplia gama de productos de alta calidad para cada
           necesidad.
