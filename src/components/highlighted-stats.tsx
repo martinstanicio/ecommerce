@@ -11,7 +11,7 @@ export default async function HighlightedStats(
   return (
     <section {...props}>
       <div className="container mx-auto flex flex-wrap gap-10 px-4 py-12 sm:gap-12">
-        {stats.map(({ id, ...stat }, i) => (
+        {stats.map((stat, i) => (
           <HighlightedStatCard key={i} stat={stat} className="flex-1" />
         ))}
       </div>
