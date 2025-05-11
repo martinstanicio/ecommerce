@@ -40,6 +40,24 @@ export const HighlightedStats: GlobalConfig = {
         },
       ],
     },
+    {
+      label: "Show products count",
+      name: "showProductsCount",
+      type: "checkbox",
+      defaultValue: true,
+      admin: {
+        description: "Show the number of available products as a stat.",
+      },
+    },
+    {
+      label: "Show tags count",
+      name: "showTagsCount",
+      type: "checkbox",
+      defaultValue: false,
+      admin: {
+        description: "Show the amount of tags as a stat.",
+      },
+    },
   ],
   typescript: {
     interface: "HighlightedStats",

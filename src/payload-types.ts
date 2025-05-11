@@ -436,6 +436,14 @@ export interface HighlightedStats {
     description: string;
     id?: string | null;
   }[];
+  /**
+   * Show the number of available products as a stat.
+   */
+  showProductsCount?: boolean | null;
+  /**
+   * Show the amount of tags as a stat.
+   */
+  showTagsCount?: boolean | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -451,6 +459,8 @@ export interface HighlightedStatsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
+  showProductsCount?: T;
+  showTagsCount?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
