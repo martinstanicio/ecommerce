@@ -1,3 +1,4 @@
+import { FeaturedProducts } from "@/components/featured-products";
 import SearchFocusedHero from "@/components/hero/search-focused-hero/main";
 import HighlightedStats from "@/components/highlighted-stats";
 import HighlightedStatsSkeleton from "@/components/skeleton/highlighted-stats-skeleton";
@@ -11,6 +12,8 @@ export default function HomePage() {
         <Suspense fallback={<HighlightedStatsSkeleton />}>
           <HighlightedStats />
         </Suspense>
+
+        <FeaturedProducts />
       </main>
     </div>
   );
