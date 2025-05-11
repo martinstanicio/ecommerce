@@ -98,9 +98,11 @@ export interface Config {
   };
   globals: {
     'highlighted-stats': HighlightedStats;
+    'featured-products': FeaturedProducts;
   };
   globalsSelect: {
     'highlighted-stats': HighlightedStatsSelect<false> | HighlightedStatsSelect<true>;
+    'featured-products': FeaturedProductsSelect<false> | FeaturedProductsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -449,6 +451,19 @@ export interface HighlightedStats {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "featured-products".
+ */
+export interface FeaturedProducts {
+  id: string;
+  /**
+   * Featured products to be displayed on the homepage.
+   */
+  products: (string | Product)[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "highlighted-stats_select".
  */
 export interface HighlightedStatsSelect<T extends boolean = true> {
@@ -461,6 +476,16 @@ export interface HighlightedStatsSelect<T extends boolean = true> {
       };
   showProductsCount?: T;
   showTagsCount?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "featured-products_select".
+ */
+export interface FeaturedProductsSelect<T extends boolean = true> {
+  products?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

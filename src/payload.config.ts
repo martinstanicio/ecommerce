@@ -4,6 +4,7 @@ import { Media } from "./collections/Media";
 import { Products } from "./collections/Products";
 import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
+import { FeaturedProducts } from "./globals/FeaturedProducts";
 import { HighlightedStats } from "./globals/HighlightedStats";
 import lexicalConfig from "./lexical.config";
 import { siteName } from "@/lib/metadata";
@@ -37,7 +38,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Products, Tags, Forms],
-  globals: [HighlightedStats],
+  globals: [HighlightedStats, FeaturedProducts],
   editor: lexicalEditor(lexicalConfig),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
