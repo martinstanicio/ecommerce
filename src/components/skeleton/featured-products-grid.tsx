@@ -5,7 +5,7 @@ export default function FeaturedProductsGridSkeleton({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const products = Array.from({ length: 2 }, (_, i) => i);
+  const products = new Array(2).fill(null);
 
   return (
     <div

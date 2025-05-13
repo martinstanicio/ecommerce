@@ -3,7 +3,7 @@ import HighlightedStatCardSkeleton from "./highlighted-stat-card";
 export default function HighlightedStatsSkeleton(
   props: React.ComponentProps<"section">,
 ) {
-  const stats = Array.from({ length: 4 }, (_, i) => i);
+  const stats = new Array(2).fill(null);
 
   return (
     <section {...props}>
