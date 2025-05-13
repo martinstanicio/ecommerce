@@ -1,6 +1,8 @@
 "use client";
 
-import { Button } from "../ui/button";
+import TagsList from "./tags-list";
+import Trigger from "./trigger";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "@/components/ui/dialog";
 import {
   Drawer,
   DrawerClose,
@@ -18,9 +20,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "../ui/drawer";
-import TagsList from "./tags-list";
-import Trigger from "./trigger";
+} from "@/components/ui/drawer";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { SimplifiedTag } from "@/lib/simplified-types";
 import { useState } from "react";

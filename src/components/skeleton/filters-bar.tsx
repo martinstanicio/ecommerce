@@ -1,5 +1,5 @@
-import { Button } from "../ui/button";
-import { Skeleton } from "../ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function FiltersBarSkeleton(
   props: React.ComponentProps<typeof Skeleton>,

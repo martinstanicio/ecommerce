@@ -1,10 +1,10 @@
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
-} from "../ui/pagination";
-import { Skeleton } from "../ui/skeleton";
+} from "@/components/ui/pagination";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function PaginationBarSkeleton(
   props: React.ComponentProps<typeof Pagination>,

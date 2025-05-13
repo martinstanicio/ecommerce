@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
 
 export default function Trigger(props: React.ComponentProps<typeof Button>) {

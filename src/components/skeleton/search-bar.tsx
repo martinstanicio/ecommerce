@@ -1,5 +1,5 @@
-import { Input } from "../ui/input";
-import { Skeleton } from "../ui/skeleton";
+import { Input } from "@/components/ui/input";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function SearchBarSkeleton(
   props: React.ComponentProps<typeof Skeleton>,

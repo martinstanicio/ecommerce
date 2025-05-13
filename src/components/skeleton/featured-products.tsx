@@ -1,6 +1,6 @@
-import { Button } from "../ui/button";
-import { Skeleton } from "../ui/skeleton";
 import FeaturedProductsGridSkeleton from "./featured-products-grid";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export async function FeaturedProductsSkeleton(
   props: React.ComponentProps<"section">,
