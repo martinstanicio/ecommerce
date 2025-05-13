@@ -1,7 +1,7 @@
 import { FeaturedProducts } from "@/components/featured-products";
 import SearchFocusedHero from "@/components/hero/search-focused-hero/main";
 import HighlightedStats from "@/components/highlighted-stats";
-import { FeaturedProductsSkeleton } from "@/components/skeleton/featured-products";
+import FeaturedProductsSkeleton from "@/components/skeleton/featured-products";
 import HighlightedStatsSkeleton from "@/components/skeleton/highlighted-stats";
 import { Suspense } from "react";
 

@@ -2,7 +2,7 @@ import FeaturedProductsGridSkeleton from "./featured-products-grid";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export async function FeaturedProductsSkeleton(
+export default function FeaturedProductsSkeleton(
   props: React.ComponentProps<"section">,
 ) {
   return (
