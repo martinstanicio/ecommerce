@@ -36,6 +36,7 @@ export const Tags: CollectionConfig = {
       type: "join",
       collection: "products",
       on: "tags",
+      required: true,
     },
   ],
 };

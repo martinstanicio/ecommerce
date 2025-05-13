@@ -30,15 +30,9 @@ export default function SearchFocusedHero() {
 
         <SearchBar className="mx-auto max-w-md" />
 
-        <div className="space-y-4">
-          <p className="text-sm font-bold tracking-wider uppercase">
-            Categorías populares
-          </p>
-
-          <Suspense fallback={<PopularTagsSkeleton />}>
-            <PopularTags />
-          </Suspense>
-        </div>
+        <Suspense fallback={<PopularTagsSkeleton />}>
+          <PopularTags />
+        </Suspense>
 
         <div className="flex justify-center gap-4 max-sm:flex-col">
           <Button size="lg" asChild>

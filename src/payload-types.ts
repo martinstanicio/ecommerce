@@ -97,10 +97,12 @@ export interface Config {
     defaultIDType: string;
   };
   globals: {
+    'popular-tags': PopularTags;
     'highlighted-stats': HighlightedStats;
     'featured-products': FeaturedProducts;
   };
   globalsSelect: {
+    'popular-tags': PopularTagsSelect<false> | PopularTagsSelect<true>;
     'highlighted-stats': HighlightedStatsSelect<false> | HighlightedStatsSelect<true>;
     'featured-products': FeaturedProductsSelect<false> | FeaturedProductsSelect<true>;
   };
@@ -228,7 +230,7 @@ export interface Tag {
   id: string;
   slug: string;
   name: string;
-  products?: {
+  products: {
     docs?: (string | Product)[];
     hasNextPage?: boolean;
     totalDocs?: number;
@@ -429,6 +431,27 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "popular-tags".
+ */
+export interface PopularTags {
+  id: string;
+  /**
+   * Automatically calculate popular tags based on the number of products associated with each tag.
+   */
+  autoCalculatePopularTags?: boolean | null;
+  /**
+   * The maximum number of popular tags to display. Only applies when 'Automatically calculate popular tags' is enabled.
+   */
+  maxPopularTags?: number | null;
+  /**
+   * Popular tags to be displayed on the homepage hero.
+   */
+  tags?: (string | Tag)[] | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "highlighted-stats".
  */
 export interface HighlightedStats {
@@ -461,6 +484,18 @@ export interface FeaturedProducts {
   products: (string | Product)[];
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "popular-tags_select".
+ */
+export interface PopularTagsSelect<T extends boolean = true> {
+  autoCalculatePopularTags?: T;
+  maxPopularTags?: T;
+  tags?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

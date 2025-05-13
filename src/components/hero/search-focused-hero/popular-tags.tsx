@@ -1,45 +1,22 @@
-import { Button } from "@/components/ui/button";
+import PopularTagsList from "./popular-tags-list";
+import { getPopularTags } from "@/lib/get-popular-tags";
 import { cn } from "@/lib/utils";
-import config from "@/payload.config";
-import Link from "next/link";
-import { getPayload } from "payload";
 
 export default async function PopularTags({
   className,
   ...props
 }: React.ComponentProps<"div">) {
-  const payload = await getPayload({ config });
-  const response = await payload.find({
-    collection: "tags",
-    depth: 0,
-    pagination: false,
-    sort: "name",
-    select: { createdAt: false, updatedAt: false },
-  });
+  const tags = await getPopularTags();
 
-  // Sort tags by the number of products in descending order
-  // and take the top 4
-  const tags = response.docs
-    .sort((a, b) => {
-      const aCount = a.products?.docs?.length;
-      const bCount = b.products?.docs?.length;
-
-      return (bCount || 0) - (aCount || 0);
-    })
-    .slice(0, 4);
+  if (!tags.length) return;
 
   return (
-    <div
-      className={cn("flex flex-wrap justify-center gap-2", className)}
-      {...props}
-    >
-      {tags.map(({ id, slug, name }) => (
-        <Button variant="secondary" size="sm" key={id} asChild>
-          <Link href={`/productos?tags=${encodeURIComponent(slug)}`}>
-            {name}
-          </Link>
-        </Button>
-      ))}
+    <div className={cn("space-y-4", className)} {...props}>
+      <p className="text-sm font-bold tracking-wider uppercase">
+        Categorías populares
+      </p>
+
+      <PopularTagsList tags={tags} />
     </div>
   );
 }
