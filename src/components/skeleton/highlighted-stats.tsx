@@ -1,4 +1,4 @@
-import HighlightedStatCardSkeleton from "./highlighted-stat-card-skeleton";
+import HighlightedStatCardSkeleton from "./highlighted-stat-card";
 
 export default function HighlightedStatsSkeleton(
   props: React.ComponentProps<"section">,
