@@ -4,7 +4,7 @@ import { getHighlightedStats } from "@/lib/get-highlighted-stats";
 export default async function HighlightedStats(
   props: React.ComponentProps<"section">,
 ) {
-  const { stats } = await getHighlightedStats();
+  const stats = await getHighlightedStats();
 
   if (!stats.length) return;
 
