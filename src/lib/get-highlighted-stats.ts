@@ -13,6 +13,8 @@ export async function getHighlightedStats() {
 
   const stats: HighlightedStats["stats"] = [];
 
+  if (!highlightedStats.enabled) return stats;
+
   if (highlightedStats.showTagsCount) {
     const tagsCount = await getTagsCount();
 

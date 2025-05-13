@@ -9,6 +9,16 @@ export const PopularTags: GlobalConfig = {
   },
   fields: [
     {
+      label: "Enabled",
+      name: "enabled",
+      type: "checkbox",
+      defaultValue: true,
+      admin: {
+        description:
+          "Enable or disable the popular tags section. There must be at least one tag in the list for it to be displayed.",
+      },
+    },
+    {
       label: "Automatically calculate popular tags",
       name: "autoCalculatePopularTags",
       type: "checkbox",

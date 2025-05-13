@@ -436,6 +436,10 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface PopularTags {
   id: string;
   /**
+   * Enable or disable the popular tags section. There must be at least one tag in the list for it to be displayed.
+   */
+  enabled?: boolean | null;
+  /**
    * Automatically calculate popular tags based on the number of products associated with each tag.
    */
   autoCalculatePopularTags?: boolean | null;
@@ -456,6 +460,10 @@ export interface PopularTags {
  */
 export interface HighlightedStats {
   id: string;
+  /**
+   * Enable or disable the highlighted stats section. There must be at least one stat for it to be displayed.
+   */
+  enabled?: boolean | null;
   stats: {
     value: string;
     description: string;
@@ -479,6 +487,10 @@ export interface HighlightedStats {
 export interface FeaturedProducts {
   id: string;
   /**
+   * Enable or disable the featured products section. There must be at least one product in the list for it to be displayed.
+   */
+  enabled?: boolean | null;
+  /**
    * Featured products to be displayed on the homepage.
    */
   products: (string | Product)[];
@@ -490,6 +502,7 @@ export interface FeaturedProducts {
  * via the `definition` "popular-tags_select".
  */
 export interface PopularTagsSelect<T extends boolean = true> {
+  enabled?: T;
   autoCalculatePopularTags?: T;
   maxPopularTags?: T;
   tags?: T;
@@ -502,6 +515,7 @@ export interface PopularTagsSelect<T extends boolean = true> {
  * via the `definition` "highlighted-stats_select".
  */
 export interface HighlightedStatsSelect<T extends boolean = true> {
+  enabled?: T;
   stats?:
     | T
     | {
@@ -520,6 +534,7 @@ export interface HighlightedStatsSelect<T extends boolean = true> {
  * via the `definition` "featured-products_select".
  */
 export interface FeaturedProductsSelect<T extends boolean = true> {
+  enabled?: T;
   products?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -9,6 +9,16 @@ export const FeaturedProducts: GlobalConfig = {
   },
   fields: [
     {
+      label: "Enabled",
+      name: "enabled",
+      type: "checkbox",
+      defaultValue: true,
+      admin: {
+        description:
+          "Enable or disable the featured products section. There must be at least one product in the list for it to be displayed.",
+      },
+    },
+    {
       label: "Products",
       name: "products",
       type: "relationship",

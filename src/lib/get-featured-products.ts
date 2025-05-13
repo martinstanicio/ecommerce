@@ -4,10 +4,12 @@ import { getPayload } from "payload";
 
 export async function getFeaturedProducts() {
   const payload = await getPayload({ config });
-  const { products } = await payload.findGlobal({
+  const { enabled, products } = await payload.findGlobal({
     slug: "featured-products",
     depth: 2,
   });
+
+  if (!enabled) return [];
 
   if (!isPopulatedList(products)) {
     throw new Error(

@@ -9,6 +9,16 @@ export const HighlightedStats: GlobalConfig = {
   },
   fields: [
     {
+      label: "Enabled",
+      name: "enabled",
+      type: "checkbox",
+      defaultValue: true,
+      admin: {
+        description:
+          "Enable or disable the highlighted stats section. There must be at least one stat for it to be displayed.",
+      },
+    },
+    {
       label: "Stats",
       name: "stats",
       type: "array",

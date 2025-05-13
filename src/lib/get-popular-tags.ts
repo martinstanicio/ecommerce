@@ -9,6 +9,8 @@ export async function getPopularTags() {
     depth: 1,
   });
 
+  if (!popularTags.enabled) return [];
+
   if (!popularTags.autoCalculatePopularTags) {
     if (!popularTags.tags) {
       throw new Error("Manually selected popular tags must not be undefined.");
