@@ -1,20 +1,13 @@
 import FeaturedProductsGrid from "./featured-products-grid";
 import { Button } from "./ui/button";
 import { getFeaturedProducts } from "@/lib/get-featured-products";
-import { isPopulatedList } from "@/lib/is-populated";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export async function FeaturedProducts(props: React.ComponentProps<"section">) {
-  const { products } = await getFeaturedProducts();
+  const products = await getFeaturedProducts();
 
   if (!products.length) return;
-
-  if (!isPopulatedList(products)) {
-    throw new Error(
-      "Featured products must be populated. Try increasing depth.",
-    );
-  }
 
   return (
     <section {...props}>
