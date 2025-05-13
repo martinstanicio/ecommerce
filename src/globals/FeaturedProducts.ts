@@ -14,8 +14,7 @@ export const FeaturedProducts: GlobalConfig = {
       type: "relationship",
       relationTo: "products",
       hasMany: true,
-      minRows: 4,
-      maxRows: 4,
+      minRows: 0,
       required: true,
       admin: {
         description: "Featured products to be displayed on the homepage.",

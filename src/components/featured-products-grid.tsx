@@ -14,7 +14,12 @@ export default function FeaturedProductsGrid({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4",
+        "grid justify-center gap-6",
+        products.length >= 1 &&
+          "grid-cols-[minmax(0,_38rem)] sm:grid-cols-[minmax(0,_24rem)]",
+        products.length >= 2 && "sm:grid-cols-[repeat(2,_minmax(0,_24rem))]",
+        products.length >= 3 && "md:grid-cols-[repeat(3,_minmax(0,_24rem))]",
+        products.length >= 4 && "lg:grid-cols-[repeat(4,_minmax(0,_24rem))]",
         className,
       )}
       {...props}

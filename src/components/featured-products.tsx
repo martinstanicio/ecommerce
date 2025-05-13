@@ -2,10 +2,13 @@ import FeaturedProductsGrid from "./featured-products-grid";
 import { Button } from "./ui/button";
 import { getFeaturedProducts } from "@/lib/get-featured-products";
 import { isPopulatedList } from "@/lib/is-populated";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 
 export async function FeaturedProducts(props: React.ComponentProps<"section">) {
   const { products } = await getFeaturedProducts();
+
+  if (!products.length) return;
 
   if (!isPopulatedList(products)) {
     throw new Error(
@@ -25,7 +28,13 @@ export async function FeaturedProducts(props: React.ComponentProps<"section">) {
         </div>
         <FeaturedProductsGrid products={products} />
         <div className="flex justify-center">
-          <Button size="lg" asChild className="max-sm:w-full">
+          <Button
+            size="lg"
+            asChild
+            className={cn(
+              products.length > 1 ? "max-lg:w-full" : "max-sm:w-full",
+            )}
+          >
             <Link href="/productos">Ver productos</Link>
           </Button>
         </div>
