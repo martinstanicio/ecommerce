@@ -18,7 +18,7 @@ export default function SearchFocusedHero() {
         priority
       />
 
-      <div className="relative z-10 container mx-auto space-y-8 px-4 py-20 text-center md:space-y-12 md:py-24 lg:py-32 xl:max-w-6xl">
+      <div className="relative z-10 container mx-auto space-y-12 px-4 py-24 text-center md:space-y-12 xl:max-w-6xl">
         <div className="space-y-4 text-balance">
           <h1 className="text-3xl font-bold sm:text-5xl md:text-6xl">
             Encontrá exactamente lo que estás buscando
