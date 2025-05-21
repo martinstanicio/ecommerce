@@ -5,35 +5,39 @@ import config from "@/payload.config";
 import { getPayload } from "payload";
 
 export async function getHighlightedStats() {
-  const payload = await getPayload({ config });
-  const highlightedStats = await payload.findGlobal({
-    slug: "highlighted-stats",
-    depth: 0,
-  });
-
-  const stats: HighlightedStats["stats"] = [];
-
-  if (!highlightedStats.enabled) return stats;
-
-  if (highlightedStats.showTagsCount) {
-    const tagsCount = await getTagsCount();
-
-    stats.push({
-      value: tagsCount.toString(),
-      description: "Categorías diferentes",
+  try {
+    const payload = await getPayload({ config });
+    const highlightedStats = await payload.findGlobal({
+      slug: "highlighted-stats",
+      depth: 0,
     });
+
+    if (!highlightedStats.enabled) return [];
+
+    const stats: HighlightedStats["stats"] = [];
+
+    if (highlightedStats.showTagsCount) {
+      const tagsCount = await getTagsCount();
+
+      stats.push({
+        value: tagsCount.toString(),
+        description: "Categorías diferentes",
+      });
+    }
+
+    if (highlightedStats.showProductsCount) {
+      const productsCount = await getProductsCount();
+
+      stats.push({
+        value: productsCount.toString(),
+        description: "Productos",
+      });
+    }
+
+    stats.push(...highlightedStats.stats);
+
+    return stats;
+  } catch (_) {
+    return [];
   }
-
-  if (highlightedStats.showProductsCount) {
-    const productsCount = await getProductsCount();
-
-    stats.push({
-      value: productsCount.toString(),
-      description: "Productos",
-    });
-  }
-
-  stats.push(...highlightedStats.stats);
-
-  return stats;
 }
