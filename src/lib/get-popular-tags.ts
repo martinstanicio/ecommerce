@@ -1,46 +1,39 @@
+import { getCalculatedPopularTags } from "./get-calculated-popular-tags";
 import { isPopulatedList } from "./is-populated";
+import { PopularTags } from "@/payload-types";
 import config from "@/payload.config";
 import { getPayload } from "payload";
 
 export async function getPopularTags() {
-  const payload = await getPayload({ config });
-  const popularTags = await payload.findGlobal({
-    slug: "popular-tags",
-    depth: 1,
-  });
+  let response: PopularTags;
 
-  if (!popularTags.enabled) return [];
+  try {
+    const payload = await getPayload({ config });
+    response = await payload.findGlobal({
+      slug: "popular-tags",
+      depth: 1,
+    });
+  } catch (_) {
+    return [];
+  }
 
-  if (!popularTags.autoCalculatePopularTags) {
-    if (!popularTags.tags) {
-      throw new Error("Manually selected popular tags must not be undefined.");
-    }
+  if (!response.enabled) return [];
 
-    if (!isPopulatedList(popularTags.tags)) {
+  if (!response.autoCalculatePopularTags) {
+    if (!Array.isArray(response.tags)) return [];
+
+    if (!isPopulatedList(response.tags)) {
       throw new Error("Popular tags must be populated. Try increasing depth.");
     }
 
-    return popularTags.tags;
+    return response.tags;
   }
 
-  if (!popularTags.maxPopularTags) {
+  if (!response.maxPopularTags) {
     throw new Error("Max popular tags must not be undefined.");
   }
 
-  const { docs: tags } = await payload.find({
-    collection: "tags",
-    depth: 0,
-    pagination: false,
-    sort: "name",
-  });
+  const calculatedPopularTags = await getCalculatedPopularTags();
 
-  // Sort tags by the number of products they are associated with
-  return tags
-    .sort((a, b) => {
-      const aCount = a.products.totalDocs || 0;
-      const bCount = b.products.totalDocs || 0;
-
-      return bCount - aCount;
-    })
-    .slice(0, popularTags.maxPopularTags);
+  return calculatedPopularTags.slice(0, response.maxPopularTags);
 }
