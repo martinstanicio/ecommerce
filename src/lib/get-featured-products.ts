@@ -1,15 +1,24 @@
 import { isPopulatedList } from "./is-populated";
+import { Product } from "@/payload-types";
 import config from "@/payload.config";
 import { getPayload } from "payload";
 
 export async function getFeaturedProducts() {
-  const payload = await getPayload({ config });
-  const { enabled, products } = await payload.findGlobal({
-    slug: "featured-products",
-    depth: 2,
-  });
+  const products: (string | Product)[] = [];
 
-  if (!enabled) return [];
+  try {
+    const payload = await getPayload({ config });
+    const res = await payload.findGlobal({
+      slug: "featured-products",
+      depth: 2,
+    });
+
+    if (!res.enabled || !Array.isArray(res.products)) return [];
+
+    products.push(...res.products);
+  } catch (_) {
+    return [];
+  }
 
   if (!isPopulatedList(products)) {
     throw new Error(
