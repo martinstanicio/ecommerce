@@ -146,6 +146,8 @@ export interface UserAuthOperations {
       };
 }
 /**
+ * This collection contains the users of the system.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
@@ -166,6 +168,8 @@ export interface User {
   password?: string | null;
 }
 /**
+ * This collection contains the images uploaded by users.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
@@ -190,6 +194,8 @@ export interface Media {
   focalY?: number | null;
 }
 /**
+ * This collection contains the products available in the store.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "products".
  */
@@ -223,6 +229,8 @@ export interface Product {
   createdAt: string;
 }
 /**
+ * This collection contains the tags used to categorize products.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "tags".
  */
@@ -239,6 +247,8 @@ export interface Tag {
   createdAt: string;
 }
 /**
+ * This collection contains the forms submitted by users via the contact form.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "forms".
  */

@@ -3,7 +3,19 @@ import type { CollectionConfig } from "payload";
 
 export const Forms: CollectionConfig = {
   slug: "forms",
-  admin: { useAsTitle: "subject" },
+  labels: {
+    singular: { en: "Form", es: "Formulario" },
+    plural: { en: "Forms", es: "Formularios" },
+  },
+  admin: {
+    defaultColumns: ["subject", "name", "createdAt", "isResolved"],
+    description: {
+      en: "This collection contains the forms submitted by users via the contact form.",
+      es: "Esta colección contiene los formularios enviados por los usuarios a través del formulario de contacto.",
+    },
+    hideAPIURL: true,
+    useAsTitle: "subject",
+  },
   access: {
     create: none,
     read: editorOrAdmin,
@@ -12,35 +24,35 @@ export const Forms: CollectionConfig = {
   },
   fields: [
     {
-      label: "Name",
+      label: { en: "Name", es: "Nombre" },
       name: "name",
       type: "text",
       required: true,
       admin: { readOnly: true },
     },
     {
-      label: "Email",
+      label: { en: "Email", es: "Correo electrónico" },
       name: "email",
       type: "email",
       required: true,
       admin: { readOnly: true },
     },
     {
-      label: "Subject",
+      label: { en: "Subject", es: "Asunto" },
       name: "subject",
       type: "text",
       required: true,
       admin: { readOnly: true },
     },
     {
-      label: "Message",
+      label: { en: "Message", es: "Mensaje" },
       name: "message",
       type: "textarea",
       required: true,
       admin: { readOnly: true },
     },
     {
-      label: "Resolved",
+      label: { en: "Resolved", es: "Resuelto" },
       name: "isResolved",
       type: "checkbox",
       defaultValue: false,

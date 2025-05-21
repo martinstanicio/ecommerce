@@ -5,26 +5,38 @@ import type { CollectionConfig, Where } from "payload";
 
 export const Users: CollectionConfig = {
   slug: "users",
-  admin: { useAsTitle: "name" },
+  labels: {
+    singular: { en: "User", es: "Usuario" },
+    plural: { en: "Users", es: "Usuarios" },
+  },
+  admin: {
+    defaultColumns: ["name", "role", "email"],
+    description: {
+      en: "This collection contains the users of the system.",
+      es: "Esta colección contiene los usuarios del sistema.",
+    },
+    hideAPIURL: true,
+    useAsTitle: "name",
+  },
   auth: { loginWithUsername: { requireEmail: true, allowEmailLogin: true } },
   fields: [
     {
-      label: "Name",
+      label: { en: "Name", es: "Nombre" },
       name: "name",
       type: "text",
       required: true,
     },
     {
-      label: "Role",
+      label: { en: "Role", es: "Rol" },
       name: "role",
       type: "select",
       options: [
         {
-          label: "Admin",
+          label: { en: "Admin", es: "Administrador" },
           value: "admin",
         },
         {
-          label: "Editor",
+          label: { en: "Editor", es: "Editor" },
           value: "editor",
         },
       ],

@@ -3,23 +3,27 @@ import { GlobalConfig } from "payload";
 
 export const FeaturedProducts: GlobalConfig = {
   slug: "featured-products",
+  label: { en: "Featured products", es: "Productos destacados" },
+  admin: { hideAPIURL: true },
   access: {
     read: anyone,
     update: editorOrAdmin,
   },
   fields: [
     {
-      label: "Enabled",
+      label: { en: "Enabled", es: "Habilitado" },
       name: "enabled",
       type: "checkbox",
       defaultValue: true,
       admin: {
-        description:
-          "Enable or disable the featured products section. There must be at least one product in the list for it to be displayed.",
+        description: {
+          en: "Enable or disable the featured products section. There must be at least one product in the list for it to be displayed.",
+          es: "Habilitar o deshabilitar la sección de productos destacados. Debe haber al menos un producto en la lista para que se muestre.",
+        },
       },
     },
     {
-      label: "Products",
+      label: { en: "Products", es: "Productos" },
       name: "products",
       type: "relationship",
       relationTo: "products",
@@ -27,7 +31,10 @@ export const FeaturedProducts: GlobalConfig = {
       minRows: 0,
       required: true,
       admin: {
-        description: "Featured products to be displayed on the homepage.",
+        description: {
+          en: "Featured products to be displayed on the homepage.",
+          es: "Productos destacados que se mostrarán en la página de inicio.",
+        },
       },
     },
   ],

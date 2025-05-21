@@ -5,7 +5,19 @@ import type { CollectionConfig } from "payload";
 
 export const Products: CollectionConfig = {
   slug: "products",
-  admin: { useAsTitle: "name" },
+  labels: {
+    singular: { en: "Product", es: "Producto" },
+    plural: { en: "Products", es: "Productos" },
+  },
+  admin: {
+    defaultColumns: ["name", "tags", "precio", "images"],
+    description: {
+      en: "This collection contains the products available in the store.",
+      es: "Esta colección contiene los productos disponibles en la tienda.",
+    },
+    hideAPIURL: true,
+    useAsTitle: "name",
+  },
   access: {
     create: editorOrAdmin,
     read: anyone,
@@ -14,7 +26,7 @@ export const Products: CollectionConfig = {
   },
   fields: [
     {
-      label: "Identifier",
+      label: { en: "Identifier", es: "Identificador" },
       name: "slug",
       type: "text",
       required: true,
@@ -25,24 +37,26 @@ export const Products: CollectionConfig = {
       },
     },
     {
-      label: "Name",
+      label: { en: "Name", es: "Nombre" },
       name: "name",
       type: "text",
       required: true,
       unique: true,
     },
     {
-      label: "SEO description",
+      label: { en: "SEO description", es: "Descripción SEO" },
       name: "description",
       type: "textarea",
       required: true,
       admin: {
-        description:
-          "This will be used as the meta description for the product's page. It should be between 120 and 160 characters.",
+        description: {
+          en: "This will be used as the meta description for the product's page. It should be between 120 and 160 characters.",
+          es: "Esto se usará como la meta descripción de la página del producto. Debe tener entre 120 y 160 caracteres.",
+        },
       },
     },
     {
-      label: "Full Description",
+      label: { en: "Full description", es: "Descripción completa" },
       name: "fullDescription",
       type: "richText",
       editor: lexicalEditor({
@@ -53,7 +67,7 @@ export const Products: CollectionConfig = {
       }),
     },
     {
-      label: "Tags",
+      label: { en: "Tags", es: "Categorías" },
       name: "tags",
       type: "relationship",
       relationTo: "tags",
@@ -62,13 +76,13 @@ export const Products: CollectionConfig = {
       minRows: 1,
     },
     {
-      label: "Price",
+      label: { en: "Price", es: "Precio" },
       name: "price",
       type: "number",
       required: true,
     },
     {
-      label: "Images",
+      label: { en: "Images", es: "Imágenes" },
       name: "images",
       type: "upload",
       relationTo: "media",

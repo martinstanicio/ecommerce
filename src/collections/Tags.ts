@@ -4,7 +4,19 @@ import type { CollectionConfig } from "payload";
 
 export const Tags: CollectionConfig = {
   slug: "tags",
-  admin: { useAsTitle: "name" },
+  labels: {
+    singular: { en: "Tag", es: "Categoría" },
+    plural: { en: "Tags", es: "Categorías" },
+  },
+  admin: {
+    defaultColumns: ["name", "products"],
+    description: {
+      en: "This collection contains the tags used to categorize products.",
+      es: "Esta colección contiene las categorías utilizadas para clasificar los productos.",
+    },
+    hideAPIURL: true,
+    useAsTitle: "name",
+  },
   access: {
     create: editorOrAdmin,
     read: anyone,
@@ -13,7 +25,7 @@ export const Tags: CollectionConfig = {
   },
   fields: [
     {
-      label: "Identifier",
+      label: { en: "Identifier", es: "Identificador" },
       name: "slug",
       type: "text",
       required: true,
@@ -24,14 +36,14 @@ export const Tags: CollectionConfig = {
       },
     },
     {
-      label: "Name",
+      label: { en: "Name", es: "Nombre" },
       name: "name",
       type: "text",
       required: true,
       unique: true,
     },
     {
-      label: "Products",
+      label: { en: "Products", es: "Productos" },
       name: "products",
       type: "join",
       collection: "products",
