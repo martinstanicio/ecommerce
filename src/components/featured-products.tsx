@@ -4,7 +4,9 @@ import { getFeaturedProducts } from "@/lib/get-featured-products";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
-export async function FeaturedProducts(props: React.ComponentProps<"section">) {
+export default async function FeaturedProducts(
+  props: React.ComponentProps<"section">,
+) {
   const products = await getFeaturedProducts();
 
   if (!products.length) return;

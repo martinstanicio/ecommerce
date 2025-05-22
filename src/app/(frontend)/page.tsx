@@ -1,5 +1,5 @@
 import FAQs from "@/components/faqs";
-import { FeaturedProducts } from "@/components/featured-products";
+import FeaturedProducts from "@/components/featured-products";
 import SearchFocusedHero from "@/components/hero/search-focused-hero/main";
 import HighlightedStats from "@/components/highlighted-stats";
 import FAQsSkeleton from "@/components/skeleton/faqs";
