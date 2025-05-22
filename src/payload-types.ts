@@ -100,11 +100,13 @@ export interface Config {
     'popular-tags': PopularTags;
     'highlighted-stats': HighlightedStats;
     'featured-products': FeaturedProducts;
+    'frequently-asked-questions': FrequentlyAskedQuestions;
   };
   globalsSelect: {
     'popular-tags': PopularTagsSelect<false> | PopularTagsSelect<true>;
     'highlighted-stats': HighlightedStatsSelect<false> | HighlightedStatsSelect<true>;
     'featured-products': FeaturedProductsSelect<false> | FeaturedProductsSelect<true>;
+    'frequently-asked-questions': FrequentlyAskedQuestionsSelect<false> | FrequentlyAskedQuestionsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -509,6 +511,38 @@ export interface FeaturedProducts {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "frequently-asked-questions".
+ */
+export interface FrequentlyAskedQuestions {
+  id: string;
+  /**
+   * Enable or disable the FAQs section. There must be at least one FAQ for it to be displayed.
+   */
+  enabled?: boolean | null;
+  faqs: {
+    question: string;
+    answer: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "popular-tags_select".
  */
 export interface PopularTagsSelect<T extends boolean = true> {
@@ -546,6 +580,23 @@ export interface HighlightedStatsSelect<T extends boolean = true> {
 export interface FeaturedProductsSelect<T extends boolean = true> {
   enabled?: T;
   products?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "frequently-asked-questions_select".
+ */
+export interface FrequentlyAskedQuestionsSelect<T extends boolean = true> {
+  enabled?: T;
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

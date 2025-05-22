@@ -5,6 +5,7 @@ import { Products } from "./collections/Products";
 import { Tags } from "./collections/Tags";
 import { Users } from "./collections/Users";
 import { FeaturedProducts } from "./globals/FeaturedProducts";
+import { FrequentlyAskedQuestions } from "./globals/FrequentlyAskedQuestions";
 import { HighlightedStats } from "./globals/HighlightedStats";
 import { PopularTags } from "./globals/PopularTags";
 import lexicalConfig from "./lexical.config";
@@ -39,7 +40,12 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Products, Tags, Forms],
-  globals: [PopularTags, HighlightedStats, FeaturedProducts],
+  globals: [
+    PopularTags,
+    HighlightedStats,
+    FeaturedProducts,
+    FrequentlyAskedQuestions,
+  ],
   editor: lexicalEditor(lexicalConfig),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
