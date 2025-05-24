@@ -22,13 +22,13 @@ export default function HomePage() {
           <FeaturedProducts />
         </Suspense>
 
-        <AboutUs />
+        <AboutUs className="bg-secondary" />
 
         <Suspense fallback={<FAQsSkeleton />}>
           <FAQs />
         </Suspense>
 
-        <GetInTouch />
+        <GetInTouch className="bg-secondary" />
       </main>
     </div>
   );
