@@ -1,5 +1,6 @@
 import FAQs from "@/components/faqs";
 import FeaturedProducts from "@/components/featured-products";
+import GetInTouch from "@/components/get-in-touch";
 import SearchFocusedHero from "@/components/hero/search-focused-hero/main";
 import HighlightedStats from "@/components/highlighted-stats";
 import FAQsSkeleton from "@/components/skeleton/faqs";
@@ -23,6 +24,8 @@ export default function HomePage() {
         <Suspense fallback={<FAQsSkeleton />}>
           <FAQs />
         </Suspense>
+
+        <GetInTouch />
       </main>
     </div>
   );
