@@ -27,7 +27,6 @@ export const FrequentlyAskedQuestions: GlobalConfig = {
       label: { en: "FAQs", es: "Preguntas Frecuentes" },
       name: "faqs",
       type: "array",
-      maxRows: 4,
       required: true,
       fields: [
         {
