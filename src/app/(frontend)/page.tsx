@@ -1,3 +1,4 @@
+import AboutUs from "@/components/about-us";
 import FAQs from "@/components/faqs";
 import FeaturedProducts from "@/components/featured-products";
 import GetInTouch from "@/components/get-in-touch";
@@ -20,6 +21,8 @@ export default function HomePage() {
         <Suspense fallback={<FeaturedProductsSkeleton />}>
           <FeaturedProducts />
         </Suspense>
+
+        <AboutUs />
 
         <Suspense fallback={<FAQsSkeleton />}>
           <FAQs />
