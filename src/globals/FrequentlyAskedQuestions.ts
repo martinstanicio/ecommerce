@@ -52,6 +52,6 @@ export const FrequentlyAskedQuestions: GlobalConfig = {
     },
   ],
   typescript: {
-    interface: "Frequently Asked Questions",
+    interface: "FrequentlyAskedQuestions",
   },
 };
